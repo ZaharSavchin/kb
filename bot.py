@@ -11,11 +11,11 @@ from aiogram.fsm.storage.redis import RedisStorage, Redis
 async def main():
     config: Config = load_config()
 
-    redis: Redis = Redis(host='localhost')
-    storage: RedisStorage = RedisStorage(redis=redis)
+    # redis: Redis = Redis(host='localhost')
+    # storage: RedisStorage = RedisStorage(redis=redis)
 
     bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
-    dp = Dispatcher(storage=storage)
+    dp = Dispatcher()
 
     await set_main_menu(bot)
 
@@ -32,4 +32,4 @@ if __name__ == '__main__':
     except Exception as err:
         print(err)
 
-# hAoRYI3cfoGv
+# KBjghp4q8jjm
