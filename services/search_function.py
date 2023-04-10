@@ -19,7 +19,6 @@ async def get_items():
         for user_id, request in users_requests_db.copy().items():
             # Запрашиваем HTML-код страницы
             result = requests.get(f"https://www.kufar.by/l{request['region']}?ot=1&query={request['request']}")
-            print(request['request'])
             # Разбираем HTML-код с помощью BeautifulSoup
             soup = BeautifulSoup(result.text, "html.parser")
             # Получаем ссылки на последние 5 товаров
@@ -34,5 +33,8 @@ async def get_items():
                         request['user_items'].append(item[:20])
                         # await save_users_requests_db()
                         requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
+                        await asyncio.sleep(1)
+                    await asyncio.sleep(1)
+                await asyncio.sleep(1)
         await asyncio.sleep(30)
 
