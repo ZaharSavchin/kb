@@ -33,8 +33,6 @@ async def get_items():
                         request['user_items'].append(item[:20])
                         # await save_users_requests_db()
                         requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
-                        await asyncio.sleep(1)
-                    await asyncio.sleep(1)
-                await asyncio.sleep(1)
-        await asyncio.sleep(30)
+            await asyncio.sleep(1)
+        await asyncio.sleep(20)
 
