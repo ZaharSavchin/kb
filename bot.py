@@ -1,13 +1,13 @@
 import asyncio
+import logging
 
 from aiogram import Bot, Dispatcher
 from config_data.config import Config, load_config
 from keyboards.main_menu import set_main_menu
 from handlers import other_handlers, user_handlers, admin_handlers, regions_handlers
-from services.search_function import get_items
+from config_data.logging_utils import setup_logger
 
-
-from aiogram.fsm.storage.redis import RedisStorage, Redis
+setup_logger('app.log')
 
 
 async def main():
@@ -26,13 +26,15 @@ async def main():
     dp.include_router(regions_handlers.router)
     dp.include_router(other_handlers.router)
 
-
     # await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot, polling_timeout=30)
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except Exception as e:
+        logging.error(f"Произошла ошибка: {e}")
 
 
 # KBjghp4q8jjm
