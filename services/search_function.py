@@ -17,8 +17,10 @@ BOT_TOKEN = config.tg_bot.token
 async def get_items():
     while True:
         for user_id, request in users_requests_db.copy().items():
+            print(users_requests_db.copy())
             # Запрашиваем HTML-код страницы
             result = requests.get(f"https://www.kufar.by/l{request['region']}?ot=1&query={request['request']}")
+            print(result)
             # Разбираем HTML-код с помощью BeautifulSoup
             soup = BeautifulSoup(result.text, "html.parser")
             # Получаем ссылки на последние 5 товаров
@@ -29,10 +31,11 @@ async def get_items():
                     title = element.text
                     link = element.get("href")
                     item = f"{title} {link}"
+                    print(item)
                     if item[:20] not in request['user_items']:
                         request['user_items'].append(item[:20])
                         # await save_users_requests_db()
                         requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
             await asyncio.sleep(1)
-        await asyncio.sleep(20)
+        await asyncio.sleep(30)
 

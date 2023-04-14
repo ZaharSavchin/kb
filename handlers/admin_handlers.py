@@ -24,5 +24,6 @@ async def stat_message(message: Message):
 
         stat = ''.join(answer)
         await message.answer(f"{stat}users: {len(users_db)}\nactive users: {len(users_requests_db)}")
+        print(users_requests_db)
     else:
         await message.answer(f"users: {len(users_db)}\nactive users: {len(users_requests_db)}")
