@@ -18,7 +18,7 @@ async def get_items():
     while True:
         for user_id, request in users_requests_db.copy().items():
             # Запрашиваем HTML-код страницы
-            result = requests.get(f"https://www.kufar.by/l{request['region']}?ot=1&query={request['request']}")
+            result = requests.get(f"https://www.kufar.by/l{request['region']}?cmp=0&ot=1&query={request['request']}&sort=lst.d")
             # Разбираем HTML-код с помощью BeautifulSoup
             soup = BeautifulSoup(result.text, "html.parser")
             # Получаем ссылки на последние 5 товаров
