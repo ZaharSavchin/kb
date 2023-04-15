@@ -14,13 +14,14 @@ router = Router()
 
 @router.message(CommandStart())
 async def process_start_command(message: Message):
+    await message.answer(LEXICON["/start"])
     if message.from_user.id not in users_db:
         users_db[message.from_user.id] = message.from_user.full_name
         await save_users_db()
     if message.from_user.id in users_requests_db:
         del users_requests_db[message.from_user.id]
         await save_users_requests_db()
-    await message.answer(LEXICON["/start"])
+
 
 
 @router.message(Command(commands='help'))

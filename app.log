@@ -1,0 +1,530 @@
+ERROR:aiogram.event:Cause exception while process update id=988858284 by bot id=6182678315
+ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 698, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\retry.py", line 46, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 699, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 987, in _connect
+    raise err
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 975, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\user_handlers.py", line 19, in process_start_command
+    await save_users_db()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\database\database.py", line 46, in save_users_db
+    r.set('user_dict', json.dumps(users_db))
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\commands\core.py", line 2302, in set
+    return self.execute_command("SET", *pieces, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\client.py", line 1255, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 1441, in get_connection
+    connection.connect()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 704, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ERROR:aiogram.event:Cause exception while process update id=988858287 by bot id=6182678315
+ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 698, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\retry.py", line 46, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 699, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 987, in _connect
+    raise err
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 975, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\user_handlers.py", line 20, in process_start_command
+    await save_users_db()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\database\database.py", line 46, in save_users_db
+    r.set('user_dict', json.dumps(users_db))
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\commands\core.py", line 2302, in set
+    return self.execute_command("SET", *pieces, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\client.py", line 1255, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 1441, in get_connection
+    connection.connect()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 704, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ERROR:aiogram.event:Cause exception while process update id=988858288 by bot id=6182678315
+ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 698, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\retry.py", line 46, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 699, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 987, in _connect
+    raise err
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 975, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\user_handlers.py", line 63, in add_request_process
+    await save_users_requests_db()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\database\database.py", line 50, in save_users_requests_db
+    r.set('users_requests', json.dumps(users_requests_db))
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\commands\core.py", line 2302, in set
+    return self.execute_command("SET", *pieces, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\client.py", line 1255, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 1441, in get_connection
+    connection.connect()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 704, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ERROR:aiogram.event:Cause exception while process update id=988858289 by bot id=6182678315
+ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 698, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\retry.py", line 46, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 699, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 987, in _connect
+    raise err
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 975, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\regions_handlers.py", line 63, in gomel
+    await save_users_requests_db()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\database\database.py", line 50, in save_users_requests_db
+    r.set('users_requests', json.dumps(users_requests_db))
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\commands\core.py", line 2302, in set
+    return self.execute_command("SET", *pieces, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\client.py", line 1255, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 1441, in get_connection
+    connection.connect()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 704, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ERROR:aiogram.event:Cause exception while process update id=988858290 by bot id=6182678315
+ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 698, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\retry.py", line 46, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 699, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 987, in _connect
+    raise err
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 975, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\regions_handlers.py", line 14, in process_forward_press
+    await save_users_requests_db()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\database\database.py", line 50, in save_users_requests_db
+    r.set('users_requests', json.dumps(users_requests_db))
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\commands\core.py", line 2302, in set
+    return self.execute_command("SET", *pieces, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\client.py", line 1255, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 1441, in get_connection
+    connection.connect()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 704, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ERROR:aiogram.event:Cause exception while process update id=988858292 by bot id=6182678315
+ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 698, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\retry.py", line 46, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 699, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 987, in _connect
+    raise err
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 975, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\user_handlers.py", line 40, in process_stop_command
+    await save_users_requests_db()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\database\database.py", line 50, in save_users_requests_db
+    r.set('users_requests', json.dumps(users_requests_db))
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\commands\core.py", line 2302, in set
+    return self.execute_command("SET", *pieces, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\client.py", line 1255, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 1441, in get_connection
+    connection.connect()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\redis\connection.py", line 704, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: Telegram server says ServerDisconnectedError: Server disconnected
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: Telegram server says ServerDisconnectedError: Server disconnected

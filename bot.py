@@ -31,10 +31,8 @@ async def main():
 
 
 if __name__ == '__main__':
-    try:
-        asyncio.run(main())
-    except Exception as e:
-        logging.error(f"Произошла ошибка: {e}")
+    asyncio.run(main())
+
 
 
 # KBjghp4q8jjm
