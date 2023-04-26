@@ -32,7 +32,13 @@ async def get_items():
                         if item[:20] not in request['user_items']:
                             request['user_items'].append(item[:20])
                             # await save_users_requests_db()
-                            requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
+                            try:
+                                image_url = re.search('data-src="(.*?)"', str(element)).group(1)
+                                requests.get(
+                                    f'{API_URL}{BOT_TOKEN}/sendPhoto?chat_id={user_id}&photo={image_url}&caption={item}')
+                            except AttributeError:
+                                requests.get(
+                                    f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
                 await asyncio.sleep(1)
             else:
                 result = requests.get(f"https://www.kufar.by/l{request['region']}?cmp=0&ot=1&query={request['request']}&sort=lst.d")
@@ -49,7 +55,11 @@ async def get_items():
                         if item[:20] not in request['user_items']:
                             request['user_items'].append(item[:20])
                             # await save_users_requests_db()
-                            requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
+                            try:
+                                image_url = re.search('data-src="(.*?)"', str(element)).group(1)
+                                requests.get(f'{API_URL}{BOT_TOKEN}/sendPhoto?chat_id={user_id}&photo={image_url}&caption={item}')
+                            except AttributeError:
+                                requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
                 await asyncio.sleep(1)
         await asyncio.sleep(5)
 
