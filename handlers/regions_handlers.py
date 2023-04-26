@@ -1,6 +1,6 @@
 from aiogram import Router
-from aiogram.filters import Command, CommandStart, Text
-from aiogram.types import CallbackQuery, Message
+from aiogram.filters import Text
+from aiogram.types import CallbackQuery
 from database.database import users_requests_db, save_users_requests_db
 
 

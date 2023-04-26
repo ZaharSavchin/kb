@@ -528,3 +528,994 @@ Traceback (most recent call last):
 redis.exceptions.ConnectionError: Error 10061 connecting to 94.26.236.11:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
 ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: Telegram server says ServerDisconnectedError: Server disconnected
 ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: Telegram server says ServerDisconnectedError: Server disconnected
+ERROR:aiogram.event:Cause exception while process update id=988858327 by bot id=6182678315
+AttributeError: 'str' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 13, in stat_message
+    await get_items()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\services\search_function.py", line 26, in get_items
+    soup = BeautifulSoup(result.text, "html.parser")
+                         ^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'text'
+ERROR:aiogram.event:Cause exception while process update id=988858333 by bot id=6182678315
+AttributeError: 'str' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 13, in stat_message
+    await get_items()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\services\search_function.py", line 24, in get_items
+    soup = BeautifulSoup(result.text, "html.parser")
+                         ^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'text'
+ERROR:aiogram.event:Cause exception while process update id=988858345 by bot id=6182678315
+NameError: name 'request' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 13, in stat_message
+    await get_items()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\services\search_function.py", line 41, in get_items
+    await parser(result)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\services\search_function.py", line 27, in parser
+    if item[:20] not in request['user_items']:
+                        ^^^^^^^
+NameError: name 'request' is not defined
+ERROR:aiogram.event:Cause exception while process update id=988858348 by bot id=6182678315
+NameError: name 'request' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 13, in stat_message
+    await get_items()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\services\search_function.py", line 46, in get_items
+    await parser(result)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\services\search_function.py", line 27, in parser
+    if item[:20] not in request['user_items']:
+                        ^^^^^^^
+NameError: name 'request' is not defined
+ERROR:aiogram.event:Cause exception while process update id=988858349 by bot id=6182678315
+NameError: name 'request' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 13, in stat_message
+    await get_items()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\services\search_function.py", line 49, in get_items
+    await parser(result)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\services\search_function.py", line 28, in parser
+    if item[:20] not in request['user_items']:
+                        ^^^^^^^
+NameError: name 'request' is not defined
+ERROR:aiogram.event:Cause exception while process update id=988858350 by bot id=6182678315
+NameError: name 'request' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 13, in stat_message
+    await get_items()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\services\search_function.py", line 50, in get_items
+    await parser(result)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\services\search_function.py", line 29, in parser
+    if item[:20] not in request['user_items']:
+                        ^^^^^^^
+NameError: name 'request' is not defined
+ERROR:aiogram.event:Cause exception while process update id=988858351 by bot id=6182678315
+NameError: name 'request' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 13, in stat_message
+    await get_items()
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\services\search_function.py", line 51, in get_items
+    await parser(result)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\services\search_function.py", line 30, in parser
+    if item[:20] not in request['user_items']:
+                        ^^^^^^^
+NameError: name 'request' is not defined
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: Telegram server says Request timeout error
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000225D9811250>
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000002B8AB191190>
+ERROR:asyncio:Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x000002B8AB1690F0>, 54461.031)]']
+connector: <aiohttp.connector.TCPConnector object at 0x000002B8AABDE5D0>
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000019AA16C0C90>
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001C8BC2EC350>
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000028A1E060E50>
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000019C79CDCBD0>
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001EFC1932390>
+ERROR:aiogram.event:Cause exception while process update id=988858417 by bot id=6182678315
+TelegramForbiddenError: Telegram server says Forbidden: bot was blocked by the user
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 45, in clear_users
+    sent_message = await bot.send_message(chat_id=user_id, text="_", disable_notification=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\bot.py", line 2596, in send_message
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\bot.py", line 374, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\session\base.py", line 194, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\session\aiohttp.py", line 161, in make_request
+    response = self.check_response(method=method, status_code=resp.status, content=raw_result)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\session\base.py", line 119, in check_response
+    raise TelegramForbiddenError(method=method, message=description)
+aiogram.exceptions.TelegramForbiddenError: Telegram server says Forbidden: bot was blocked by the user
+ERROR:aiogram.event:Cause exception while process update id=988858419 by bot id=6182678315
+TelegramForbiddenError: Telegram server says Forbidden: bot was blocked by the user
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 45, in clear_users
+    sent_message = await bot.send_message(chat_id=user_id, text="_", disable_notification=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\bot.py", line 2596, in send_message
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\bot.py", line 374, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\session\base.py", line 194, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\session\aiohttp.py", line 161, in make_request
+    response = self.check_response(method=method, status_code=resp.status, content=raw_result)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\session\base.py", line 119, in check_response
+    raise TelegramForbiddenError(method=method, message=description)
+aiogram.exceptions.TelegramForbiddenError: Telegram server says Forbidden: bot was blocked by the user
+ERROR:aiogram.event:Cause exception while process update id=988858420 by bot id=6182678315
+TelegramForbiddenError: Telegram server says Forbidden: bot was blocked by the user
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 45, in clear_users
+    sent_message = await bot.send_message(chat_id=user_id, text="_", disable_notification=True)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\bot.py", line 2596, in send_message
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\bot.py", line 374, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\session\base.py", line 194, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\session\aiohttp.py", line 161, in make_request
+    response = self.check_response(method=method, status_code=resp.status, content=raw_result)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\session\base.py", line 119, in check_response
+    raise TelegramForbiddenError(method=method, message=description)
+aiogram.exceptions.TelegramForbiddenError: Telegram server says Forbidden: bot was blocked by the user
+ERROR:aiogram.event:Cause exception while process update id=988858422 by bot id=6182678315
+TelegramForbiddenError: Telegram server says Forbidden: bot was blocked by the user
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 45, in clear_users
+    sent_message = await bot.send_message(chat_id=user_id, text="_", disable_notification=True)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\bot.py", line 2596, in send_message
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\bot.py", line 374, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\session\base.py", line 194, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\session\aiohttp.py", line 161, in make_request
+    response = self.check_response(method=method, status_code=resp.status, content=raw_result)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\client\session\base.py", line 119, in check_response
+    raise TelegramForbiddenError(method=method, message=description)
+aiogram.exceptions.TelegramForbiddenError: Telegram server says Forbidden: bot was blocked by the user
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000021C632AD390>
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001CAC21DD750>
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001939DAB0D90>
+ERROR:aiogram.event:Cause exception while process update id=988858425 by bot id=6182678315
+TypeError: cannot unpack non-iterable int object
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 57, in clear_users
+    for k, v in users_too_delete:
+        ^^^^
+TypeError: cannot unpack non-iterable int object
+ERROR:aiogram.event:Cause exception while process update id=988858428 by bot id=6182678315
+TypeError: cannot unpack non-iterable int object
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 57, in clear_users
+    for k, v in users_too_delete:
+        ^^^^
+TypeError: cannot unpack non-iterable int object
+ERROR:aiogram.event:Cause exception while process update id=988858429 by bot id=6182678315
+TypeError: cannot unpack non-iterable int object
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 57, in clear_users
+    for k, v in users_too_delete:
+        ^^^^
+TypeError: cannot unpack non-iterable int object
+ERROR:aiogram.event:Cause exception while process update id=988858431 by bot id=6182678315
+TypeError: cannot unpack non-iterable int object
+Traceback (most recent call last):
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\storage\memory.py", line 57, in lock
+    yield
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Zahar\PycharmProjects\kufar_aiogram\handlers\admin_handlers.py", line 57, in clear_users
+    for k, v in users_too_delete:
+        ^^^^
+TypeError: cannot unpack non-iterable int object
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000002034E8DD490>

@@ -12,6 +12,7 @@ users_requests_db: Dict[int, Dict[str, Union[str, List[str]]]] = {}
 #     686811658: {
 #         'full_name': 'Nikolay Sirosh',
 #         'request': 'iphone',
+#         'region': ''
 #         'user_items': ['itm1', 'itm2', 'itm3']
 #     },
 #     965855365: {
@@ -22,9 +23,9 @@ users_requests_db: Dict[int, Dict[str, Union[str, List[str]]]] = {}
 
 
 # Подключение к Redis
-# r = redis.Redis(host='localhost', port=6379, db=3)
-r = redis.Redis(host='127.0.0.1', port=6379, db=1)
-#
+r = redis.Redis(host='localhost', port=6379, db=3)
+# r = redis.Redis(host='127.0.0.1', port=6379, db=1)
+
 # Получение словаря из Redis
 user_dict_json = r.get('user_dict')
 if user_dict_json is not None:
