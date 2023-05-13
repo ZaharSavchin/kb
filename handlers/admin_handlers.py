@@ -37,7 +37,7 @@ async def stat_message(message: Message):
             users_db[key] = value['name']
             message_dict[value['name']] = value['request']
 
-        for k, v in message_dict:
+        for k, v in message_dict.items():
             final[f"{counter}){k}"] = v
             counter += 1
 
