@@ -28,16 +28,20 @@ async def stat_message(message: Message):
         await get_items()
     elif message.text.endswith('all'):
         message_dict = {}
+        final = {}
         counter = 1
         for k, v in users_db.copy().items():
-            message_dict[f"{counter}){v}"] = ""
-            counter += 1
+            message_dict[v] = ""
 
         for key, value in users_requests_db.copy().items():
             users_db[key] = value['name']
             message_dict[value['name']] = value['request']
 
-        answer = [f"{k}: {v}\n" for k, v in message_dict.items()]
+        for k, v in message_dict:
+            final[f"{counter}){k}"] = v
+            counter += 1
+
+        answer = [f"{k}: {v}\n" for k, v in final.items()]
         if len(answer) > 100:
             messages = len(answer) // 100
             last_user = len(answer) % 100
