@@ -10,7 +10,7 @@ users_db: Dict[int, str] = {}
 users_requests_db: Dict[int, Dict[str, Union[str, List[str]]]] = {}
 # users_requests_db: Dict[int, Dict[str, Union[str, List[str]]]] = {
 #     686811658: {
-#         'full_name': 'Nikolay Sirosh',
+#         'name': 'Nikolay Sirosh',
 #         'request': 'iphone',
 #         'region': ''
 #         'user_items': ['itm1', 'itm2', 'itm3']

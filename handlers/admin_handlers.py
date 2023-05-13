@@ -27,21 +27,31 @@ async def stat_message(message: Message):
     if message.text.endswith('start'):
         await get_items()
     elif message.text.endswith('all'):
-        message_dict = {}
-        final = {}
+        # message_dict = {}
+        # final = {}
+        # counter = 1
+        # for k, v in users_db.copy().items():
+        #     message_dict[v] = ""
+        #
+        # for key, value in users_requests_db.copy().items():
+        #     users_db[key] = value['name']
+        #     message_dict[value['name']] = value['request']
+        #
+        # for k, v in message_dict.items():
+        #     final[f"{counter}){k}"] = v
+        #     counter += 1
+        #
+        # answer = [f"{k}: {v}\n" for k, v in final.items()]
+        answer = []
         counter = 1
-        for k, v in users_db.copy().items():
-            message_dict[v] = ""
+        for i in users_db:
+            if i in users_requests_db:
+                answer.append(f"{counter}){users_requests_db[i]['name']}: {users_requests_db[i]['request']}\n")
+                counter += 1
+            else:
+                answer.append(f"{counter}){users_db[i]}: 🤷\n")
+                counter += 1
 
-        for key, value in users_requests_db.copy().items():
-            users_db[key] = value['name']
-            message_dict[value['name']] = value['request']
-
-        for k, v in message_dict.items():
-            final[f"{counter}){k}"] = v
-            counter += 1
-
-        answer = [f"{k}: {v}\n" for k, v in final.items()]
         if len(answer) > 100:
             messages = len(answer) // 100
             last_user = len(answer) % 100
