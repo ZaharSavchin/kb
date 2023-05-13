@@ -47,8 +47,8 @@ async def add_request_process(message: Message):
                                                'request': message.text,
                                                'region': '',
                                                'user_items': []}
-    if message.text.startswith("https://www.kufar.by"):
-        await message.answer(f"Начат поиск по ссылке: {message.text}")
+    if message.text.startswith("https:"):
+        await message.answer(f"Начат поиск по ссылке: {message.text}\n✉️ожидайте сообщений...")
         await save_users_requests_db()
     else:
         await message.answer(f"выберите регион поиска", reply_markup=create_regions_keyboard('all',

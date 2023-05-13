@@ -22,13 +22,13 @@ async def get_items():
     while True:
         for user_id, request in users_requests_db.copy().items():
             # Запрашиваем HTML-код страницы
-            if request['request'].startswith('https://www.kufar.by'):
+            if request['request'].startswith('https:'):
                 result = requests.get(f"{request['request']}")
                 soup = BeautifulSoup(result.text, "html.parser")
                 # Получаем ссылки на последние 5 товаров
-                sections = soup.find_all("section")[:4]
+                sections = soup.find_all("section")[:2]
                 for section in sections:
-                    section = section.find_all("a", class_=re.compile(r"styles_wrapper__[a-zA-Z0-9]+$"))
+                    section = section.find_all("a", class_=re.compile(r"styles_wrapper__[a-zA-Z0-9]+$"))[:2]
                     for element in section:
                         title = element.text
                         link = element.get("href")
