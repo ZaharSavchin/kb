@@ -41,7 +41,7 @@ async def stat_message(message: Message):
             messages = len(answer) // 100
             counter = 0
             for i in range(messages + 1):
-                stat = ''.join(answer[{counter}: {counter+100}])
+                stat = ''.join(answer[counter: counter+100])
                 counter += 100
                 await message.answer(f"{stat}users: {len(users_db)}\nactive users: {len(users_requests_db)}")
             await message.answer(f"users: {len(users_db)}\nactive users: {len(users_requests_db)}")
