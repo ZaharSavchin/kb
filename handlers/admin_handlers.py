@@ -46,7 +46,7 @@ async def stat_message(message: Message):
         counter = 1
         for i in users_db:
             if i in users_requests_db:
-                answer.append(f"{counter}){users_requests_db[i]['name']}: ✅{users_requests_db[i]['request']}✅\n")
+                answer.append(f"{counter}){users_requests_db[i]['name']}: {users_requests_db[i]['request']}✅\n")
                 counter += 1
             else:
                 answer.append(f"{counter}){users_db[i]}: 🤷\n")
