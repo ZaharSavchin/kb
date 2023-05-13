@@ -28,9 +28,10 @@ async def stat_message(message: Message):
         await get_items()
     elif message.text.endswith('all'):
         message_dict = {}
-
+        counter = 1
         for k, v in users_db.copy().items():
-            message_dict[v] = ""
+            message_dict[f"{counter}){v}"] = ""
+            counter += 1
 
         for key, value in users_requests_db.copy().items():
             users_db[key] = value['name']
