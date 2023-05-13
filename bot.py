@@ -10,6 +10,9 @@ async def main():
     config: Config = load_config()
 
     bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
+
+    await bot.send_message(chat_id=6031519620, text='бот перезапущен')
+
     dp = Dispatcher()
 
     await set_main_menu(bot)

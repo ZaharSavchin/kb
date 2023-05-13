@@ -1,5 +1,4 @@
 from aiogram import Router
-import logging
 
 from aiogram import F
 from aiogram.types import Message

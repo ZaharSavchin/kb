@@ -2,7 +2,7 @@ from typing import Dict, List, Union
 
 import redis
 import json
-import logging
+
 
 users_db: Dict[int, str] = {}
 # users_db: Dict[int: str] = {id: full_name, ....}

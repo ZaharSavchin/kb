@@ -3,6 +3,7 @@ import requests
 import re
 from database.database import users_requests_db
 import asyncio
+from aiogram import Bot
 
 # from database.database import save_users_requests_db
 
@@ -13,8 +14,11 @@ API_URL: str = 'https://api.telegram.org/bot'
 config: Config = load_config()
 BOT_TOKEN = config.tg_bot.token
 
+bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
+
 
 async def get_items():
+    await bot.send_message(chat_id=6031519620, text='цикл запущен')
     while True:
         for user_id, request in users_requests_db.copy().items():
             # Запрашиваем HTML-код страницы
@@ -39,7 +43,7 @@ async def get_items():
                             except AttributeError:
                                 requests.get(
                                     f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
-                await asyncio.sleep(1)
+                await asyncio.sleep(0.1)
             else:
                 result = requests.get(f"https://www.kufar.by/l{request['region']}?cmp=0&ot=1&query={request['request']}&sort=lst.d")
                 # Разбираем HTML-код с помощью BeautifulSoup
@@ -60,6 +64,6 @@ async def get_items():
                                 requests.get(f'{API_URL}{BOT_TOKEN}/sendPhoto?chat_id={user_id}&photo={image_url}&caption={item}')
                             except AttributeError:
                                 requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
-                await asyncio.sleep(1)
+                await asyncio.sleep(0.1)
         await asyncio.sleep(5)
 

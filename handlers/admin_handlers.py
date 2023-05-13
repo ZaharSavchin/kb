@@ -37,9 +37,17 @@ async def stat_message(message: Message):
             message_dict[value['name']] = value['request']
 
         answer = [f"{k}: {v}\n" for k, v in message_dict.items()]
-
-        stat = ''.join(answer)
-        await message.answer(f"{stat}users: {len(users_db)}\nactive users: {len(users_requests_db)}")
+        if len(answer) > 100:
+            messages = len(answer) // 100
+            counter = 0
+            for i in range(messages + 1):
+                stat = ''.join(answer[{counter}: {counter+100}])
+                counter += 100
+                await message.answer(f"{stat}users: {len(users_db)}\nactive users: {len(users_requests_db)}")
+            await message.answer(f"users: {len(users_db)}\nactive users: {len(users_requests_db)}")
+        else:
+            stat = ''.join(answer)
+            await message.answer(f"{stat}users: {len(users_db)}\nactive users: {len(users_requests_db)}")
         # print(users_requests_db)
     else:
         await message.answer(f"users: {len(users_db)}\nactive users: {len(users_requests_db)}")
