@@ -2,7 +2,7 @@ from aiogram.filters import Text
 
 from aiogram import Router, F
 from aiogram.types import Message, CallbackQuery
-from database.database import users_requests_db, users_db, save_users_db, save_users_requests_db
+from database.database import users_requests_db, users_db, save_users_db, save_users_requests_db, usernames_db
 from services.search_function import get_items
 from keyboards.delete_kb import create_delete_users_keyboard
 
@@ -27,29 +27,20 @@ async def stat_message(message: Message):
     if message.text.endswith('start'):
         await get_items()
     elif message.text.endswith('all'):
-        # message_dict = {}
-        # final = {}
-        # counter = 1
-        # for k, v in users_db.copy().items():
-        #     message_dict[v] = ""
-        #
-        # for key, value in users_requests_db.copy().items():
-        #     users_db[key] = value['name']
-        #     message_dict[value['name']] = value['request']
-        #
-        # for k, v in message_dict.items():
-        #     final[f"{counter}){k}"] = v
-        #     counter += 1
-        #
-        # answer = [f"{k}: {v}\n" for k, v in final.items()]
         answer = []
         counter = 1
         for i in users_db:
             if i in users_requests_db:
-                answer.append(f"{counter}){users_requests_db[i]['name']}: {users_requests_db[i]['request']}✅\n")
+                if i in usernames_db:
+                    answer.append(f"{counter}){users_requests_db[i]['name']}(@{usernames_db[i]}): {users_requests_db[i]['request']}✅\n")
+                else:
+                    answer.append(f"{counter}){users_requests_db[i]['name']}: {users_requests_db[i]['request']}✅\n")
                 counter += 1
             else:
-                answer.append(f"{counter}){users_db[i]}: 🤷\n")
+                if i in usernames_db:
+                    answer.append(f"{counter}){users_db[i]}(@{usernames_db[i]}): 🤷\n")
+                else:
+                    answer.append(f"{counter}){users_db[i]}: 🤷\n")
                 counter += 1
 
         if len(answer) > 100:

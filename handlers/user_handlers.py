@@ -4,7 +4,8 @@ from aiogram import F
 from aiogram.types import Message
 from aiogram.filters import Command, CommandStart
 from lexicon.lexicon import LEXICON
-from database.database import users_requests_db, users_db, save_users_db, save_users_requests_db
+from database.database import users_requests_db, users_db, save_users_db, save_users_requests_db, \
+    usernames_db, save_usernames_db
 from keyboards.regions_kb import create_regions_keyboard
 
 
@@ -14,6 +15,8 @@ router = Router()
 @router.message(CommandStart())
 async def process_start_command(message: Message):
     await message.answer(LEXICON["/start"])
+    usernames_db[message.from_user.id] = message.from_user.username
+    await save_usernames_db()
     if message.from_user.id not in users_db:
         users_db[message.from_user.id] = message.from_user.full_name
         await save_users_db()
@@ -24,13 +27,25 @@ async def process_start_command(message: Message):
 
 @router.message(Command(commands='help'))
 async def process_help_command(message: Message):
+    usernames_db[message.from_user.id] = message.from_user.username
+    await save_usernames_db()
     if message.from_user.id not in users_db:
         users_db[message.from_user.id] = message.from_user.full_name
     await message.answer(LEXICON["/help"])
 
 
+@router.message(Command(commands='donat'))
+async def process_donat_command(message: Message):
+    usernames_db[message.from_user.id] = message.from_user.username
+    await save_usernames_db()
+    users_db[message.from_user.id] = message.from_user.full_name
+    await message.answer(LEXICON["/donat"])
+
+
 @router.message(Command(commands='stop'))
 async def process_stop_command(message: Message):
+    usernames_db[message.from_user.id] = message.from_user.username
+    await save_usernames_db()
     if message.from_user.id not in users_db:
         users_db[message.from_user.id] = message.from_user.full_name
     elif message.from_user.id in users_requests_db:
@@ -43,6 +58,10 @@ async def process_stop_command(message: Message):
 
 @router.message(F.text)
 async def add_request_process(message: Message):
+    users_db[message.from_user.id] = message.from_user.full_name
+    await save_users_db()
+    usernames_db[message.from_user.id] = message.from_user.username
+    await save_usernames_db()
     users_requests_db[message.from_user.id] = {'name': message.from_user.full_name,
                                                'request': message.text,
                                                'region': '',

@@ -7,6 +7,10 @@ import json
 users_db: Dict[int, str] = {}
 # users_db: Dict[int: str] = {id: full_name, ....}
 
+
+usernames_db: Dict[int, str] = {}
+# usernames_db: Dict[int: str] = {id: @username, ....}
+
 users_requests_db: Dict[int, Dict[str, Union[str, List[str]]]] = {}
 # users_requests_db: Dict[int, Dict[str, Union[str, List[str]]]] = {
 #     686811658: {
@@ -34,6 +38,15 @@ if user_dict_json is not None:
 else:
     users_db = {}
 
+
+usernames_dict_json = r.get('usernames_dict')
+if usernames_dict_json is not None:
+    usernames_db = json.loads(usernames_dict_json)
+    usernames_db = {int(k): v for k, v in usernames_db.items()}
+else:
+    usernames_db = {}
+
+
 user_requests_json = r.get('users_requests')
 if user_requests_json is not None:
     users_requests_db = json.loads(user_requests_json)
@@ -45,6 +58,10 @@ else:
 # Функция для сохранения словаря в Redis
 async def save_users_db():
     r.set('user_dict', json.dumps(users_db))
+
+
+async def save_usernames_db():
+    r.set('usernames_dict', json.dumps(usernames_db))
 
 
 async def save_users_requests_db():
