@@ -1,3 +1,5 @@
+import asyncio
+
 from aiogram.filters import Text
 
 from aiogram import Router, F
@@ -32,15 +34,28 @@ async def stat_message(message: Message):
         for i in users_db:
             if i in users_requests_db:
                 if i in usernames_db:
-                    answer.append(f"{counter}){users_requests_db[i]['name']}(@{usernames_db[i]}): {users_requests_db[i]['request']}✅\n")
+                    name = users_db[i]
+                    if name == "<*>":
+                        name = "&lt;*&gt;"
+                    answer.append(
+                        f"{counter}){name}(@{usernames_db[i]}): {users_requests_db[i]['request']}✅\n")
                 else:
-                    answer.append(f"{counter}){users_requests_db[i]['name']}: {users_requests_db[i]['request']}✅\n")
+                    name = users_db[i]
+                    if name == "<*>":
+                        name = "&lt;*&gt;"  # Замените "<*>" на "&lt;*&gt;" для правильной обработки
+                    answer.append(f"{counter}){name}: {users_requests_db[i]['request']}✅\n")
                 counter += 1
             else:
                 if i in usernames_db:
-                    answer.append(f"{counter}){users_db[i]}(@{usernames_db[i]}): 🤷\n")
+                    name = users_db[i]
+                    if name == "<*>":
+                        name = "&lt;*&gt;"
+                    answer.append(f"{counter}){name}(@{usernames_db[i]}): 🤷\n")
                 else:
-                    answer.append(f"{counter}){users_db[i]}: 🤷\n")
+                    name = users_db[i]
+                    if name == "<*>":
+                        name = "&lt;*&gt;"  # Замените "<*>" на "&lt;*&gt;" для правильной обработки
+                    answer.append(f"{counter}){name}: 🤷\n")
                 counter += 1
 
         if len(answer) > 100:
@@ -51,8 +66,9 @@ async def stat_message(message: Message):
                 stat = ''.join(answer[counter: counter+100])
                 counter += 100
                 await message.answer(f"{stat}")
+                await asyncio.sleep(0.01)
             stat = ''.join(answer[counter: counter + last_user])
-            await message.answer(f"{stat}")
+            # await message.answer(f"{stat}")
             await message.answer(f"users: {len(users_db)}\nactive users: {len(users_requests_db)}")
         else:
             stat = ''.join(answer)
