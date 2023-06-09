@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import re
-from database.database import users_requests_db
+from database.database import users_requests_db, save_users_requests_db
 import asyncio
 from aiogram import Bot
 
@@ -35,7 +35,7 @@ async def get_items():
                         item = f"{title} {link}"
                         if item[:20] not in request['user_items']:
                             request['user_items'].append(item[:20])
-                            # await save_users_requests_db()
+                            await save_users_requests_db()
                             try:
                                 image_url = re.search('data-src="(.*?)"', str(element)).group(1)
                                 requests.get(

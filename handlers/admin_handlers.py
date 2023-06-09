@@ -31,7 +31,7 @@ async def stat_message(message: Message):
     elif message.text.endswith('all'):
         answer = []
         counter = 1
-        for i in users_db:
+        for i in users_db.copy():
             if i in users_requests_db:
                 if i in usernames_db:
                     name = users_db[i]
@@ -86,6 +86,7 @@ async def clear_users(message: Message):
             await bot.delete_message(chat_id=user_id, message_id=sent_message.message_id)
         except Exception as e:
             users_to_delete[user_id] = name
+        # await asyncio.sleep(0.05)
     # print(users_to_delete)
 
     message_dict = {}
