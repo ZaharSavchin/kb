@@ -35,6 +35,7 @@ async def stat_message(message: Message):
             if i in users_requests_db:
                 if i in usernames_db:
                     name = users_db[i]
+                    print(name)
                     if name == "<*>":
                         name = "&lt;*&gt;"
                     answer.append(
