@@ -35,27 +35,26 @@ async def stat_message(message: Message):
             if i in users_requests_db:
                 if i in usernames_db:
                     name = users_db[i]
-                    print(name)
-                    if name == "<*>":
-                        name = "&lt;*&gt;"
+                    if "<" in name or ">" in name:
+                        name = name.replace(">", "&gt;").replace("<", "&lt;")
                     answer.append(
                         f"{counter}){name}(@{usernames_db[i]}): {users_requests_db[i]['request']}✅\n")
                 else:
                     name = users_db[i]
-                    if name == "<*>":
-                        name = "&lt;*&gt;"  # Замените "<*>" на "&lt;*&gt;" для правильной обработки
+                    if "<" in name or ">" in name:
+                        name = name.replace(">", "&gt;").replace("<", "&lt;")  # Замените "<*>" на "&lt;*&gt;" для правильной обработки
                     answer.append(f"{counter}){name}: {users_requests_db[i]['request']}✅\n")
                 counter += 1
             else:
                 if i in usernames_db:
                     name = users_db[i]
-                    if name == "<*>":
-                        name = "&lt;*&gt;"
+                    if "<" in name or ">" in name:
+                        name = name.replace(">", "&gt;").replace("<", "&lt;")
                     answer.append(f"{counter}){name}(@{usernames_db[i]}): 🤷\n")
                 else:
                     name = users_db[i]
-                    if name == "<*>":
-                        name = "&lt;*&gt;"  # Замените "<*>" на "&lt;*&gt;" для правильной обработки
+                    if "<" in name or ">" in name:
+                        name = name.replace(">", "&gt;").replace("<", "&lt;")  # Замените "<*>" на "&lt;*&gt;" для правильной обработки
                     answer.append(f"{counter}){name}: 🤷\n")
                 counter += 1
 
