@@ -3,25 +3,41 @@ from aiogram import Router
 from aiogram import F
 from aiogram.types import Message
 from aiogram.filters import Command, CommandStart
+
+from handlers.admin_handlers import bot
 from lexicon.lexicon import LEXICON
 from database.database import users_requests_db, users_db, save_users_db, save_users_requests_db, \
     usernames_db, save_usernames_db
 from keyboards.regions_kb import create_regions_keyboard
+from config_data.config import admin_id
 
 
 router = Router()
 
 
+async def extract_unique_code(text):
+    # Extracts the unique_code from the sent /start command.
+    return text.split()[1] if len(text.split()) > 1 else None
+
+
 @router.message(CommandStart())
 async def process_start_command(message: Message):
+    name = message.from_user.full_name
+    if "<" in name or ">" in name:
+        name = name.replace(">", "&gt;").replace("<", "&lt;")
+    username = message.from_user.username
+    user_id = message.from_user.id
+    ref_id = await extract_unique_code(message.text)
+    if ref_id == 'wb':
+        await bot.send_message(chat_id=1042048167, text=f'{name}, {username} перешел по ссылке из @enot_wildberries_bot')
     await message.answer(LEXICON["/start"])
-    usernames_db[message.from_user.id] = message.from_user.username
+    usernames_db[user_id] = username
     await save_usernames_db()
     if message.from_user.id not in users_db:
-        users_db[message.from_user.id] = message.from_user.full_name
+        users_db[user_id] = name
         await save_users_db()
-    elif message.from_user.id in users_requests_db:
-        del users_requests_db[message.from_user.id]
+    elif user_id in users_requests_db:
+        del users_requests_db[user_id]
         await save_users_requests_db()
 
 
