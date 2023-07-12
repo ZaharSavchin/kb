@@ -29,7 +29,7 @@ async def process_start_command(message: Message):
     user_id = message.from_user.id
     ref_id = await extract_unique_code(message.text)
     if ref_id == 'wb':
-        await bot.send_message(chat_id=1042048167, text=f'{name}, {username} перешел по ссылке из @enot_wildberries_bot')
+        await bot.send_message(chat_id=1042048167, text=f'{name}, @{username} перешел по ссылке из @enot_wildberries_bot')
     await message.answer(LEXICON["/start"])
     usernames_db[user_id] = username
     await save_usernames_db()
