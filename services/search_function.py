@@ -5,9 +5,7 @@ from database.database import users_requests_db, save_users_requests_db
 import asyncio
 from aiogram import Bot
 
-# from database.database import save_users_requests_db
-
-from config_data.config import Config, load_config
+from config_data.config import Config, load_config, admin_id
 
 
 API_URL: str = 'https://api.telegram.org/bot'
@@ -18,7 +16,7 @@ bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
 
 
 async def get_items():
-    await bot.send_message(chat_id=6031519620, text='цикл запущен')
+    await bot.send_message(chat_id=admin_id, text='цикл запущен')
     while True:
         for user_id, request in users_requests_db.copy().items():
             # Запрашиваем HTML-код страницы
@@ -38,11 +36,16 @@ async def get_items():
                             await save_users_requests_db()
                             try:
                                 image_url = re.search('data-src="(.*?)"', str(element)).group(1)
-                                requests.get(
-                                    f'{API_URL}{BOT_TOKEN}/sendPhoto?chat_id={user_id}&photo={image_url}&caption={item}')
+                                await bot.send_photo(chat_id=user_id, photo=image_url, caption=item)
+                                # requests.get(
+                                #     f'{API_URL}{BOT_TOKEN}/sendPhoto?chat_id={user_id}&photo={image_url}&caption={item}')
                             except AttributeError:
-                                requests.get(
-                                    f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
+                                try:
+                                    await bot.send_message(chat_id=user_id, text=item)
+                                except Exception as err:
+                                    print(err)
+                                # requests.get(
+                                #     f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
                 await asyncio.sleep(0.1)
             else:
                 result = requests.get(f"https://www.kufar.by/l{request['region']}?cmp=0&ot=1&query={request['request']}&sort=lst.d")
@@ -58,12 +61,17 @@ async def get_items():
                         item = f"{title} {link}"
                         if item[:20] not in request['user_items']:
                             request['user_items'].append(item[:20])
-                            # await save_users_requests_db()
+                            await save_users_requests_db()
                             try:
                                 image_url = re.search('data-src="(.*?)"', str(element)).group(1)
-                                requests.get(f'{API_URL}{BOT_TOKEN}/sendPhoto?chat_id={user_id}&photo={image_url}&caption={item}')
+                                await bot.send_photo(chat_id=user_id, photo=image_url, caption=item)
+                                # requests.get(f'{API_URL}{BOT_TOKEN}/sendPhoto?chat_id={user_id}&photo={image_url}&caption={item}')
                             except AttributeError:
-                                requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
+                                try:
+                                    await bot.send_message(chat_id=user_id, text=item)
+                                except Exception as err:
+                                    print(err)
+                                # requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
                 await asyncio.sleep(0.1)
         await asyncio.sleep(5)
 

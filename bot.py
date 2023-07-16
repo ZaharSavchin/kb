@@ -1,7 +1,7 @@
 import asyncio
 
 from aiogram import Bot, Dispatcher
-from config_data.config import Config, load_config
+from config_data.config import Config, load_config, admin_id
 from keyboards.main_menu import set_main_menu
 from handlers import other_handlers, user_handlers, admin_handlers, regions_handlers, ads_handler
 
@@ -11,7 +11,10 @@ async def main():
 
     bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
 
-    await bot.send_message(chat_id=6031519620, text='бот перезапущен')
+    try:
+        await bot.send_message(chat_id=admin_id, text='бот перезапущен')
+    except Exception as err:
+        print(err)
 
     dp = Dispatcher()
 

@@ -15,6 +15,14 @@ from config_data.config import admin_id
 router = Router()
 
 
+async def start_notification(user_id, name, username):
+    if user_id not in users_db:
+        try:
+            await bot.send_message(chat_id=admin_id, text=f'{name}, @{username} присоединился')
+        except Exception as err:
+            print(err)
+
+
 async def extract_unique_code(text):
     # Extracts the unique_code from the sent /start command.
     return text.split()[1] if len(text.split()) > 1 else None
@@ -28,8 +36,13 @@ async def process_start_command(message: Message):
     username = message.from_user.username
     user_id = message.from_user.id
     ref_id = await extract_unique_code(message.text)
+    if ref_id is None:
+        await start_notification(user_id=user_id, name=name, username=username)
     if ref_id == 'wb':
-        await bot.send_message(chat_id=1042048167, text=f'{name}, @{username} перешел по ссылке из @enot_wildberries_bot')
+        try:
+            await bot.send_message(chat_id=1042048167, text=f'{name}, @{username} перешел по ссылке из @enot_wildberries_bot')
+        except Exception as err:
+            print(err)
     await message.answer(LEXICON["/start"])
     usernames_db[user_id] = username
     await save_usernames_db()
