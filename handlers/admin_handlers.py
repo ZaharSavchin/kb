@@ -57,14 +57,14 @@ async def stat_message(message: Message):
                         name = name.replace(">", "&gt;").replace("<", "&lt;")  # Замените "<*>" на "&lt;*&gt;" для правильной обработки
                     answer.append(f"{counter}){name}: 🤷\n")
                 counter += 1
-
-        if len(answer) > 100:
-            messages = len(answer) // 100
-            last_user = len(answer) % 100
+        message_long = 50
+        if len(answer) > message_long:
+            messages = len(answer) // message_long
+            last_user = len(answer) % message_long
             counter = 0
             for i in range(messages + 1):
-                stat = ''.join(answer[counter: counter+100])
-                counter += 100
+                stat = ''.join(answer[counter: counter+message_long])
+                counter += message_long
                 await message.answer(f"{stat}")
                 await asyncio.sleep(0.01)
             stat = ''.join(answer[counter: counter + last_user])
