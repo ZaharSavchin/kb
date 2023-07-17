@@ -81,6 +81,8 @@ async def stat_message(message: Message):
 @router.message(F.text == 'bot users clear')
 async def clear_users(message: Message):
     for user_id, name in users_db.copy().items():
+        if "<" in name or ">" in name:
+            name = name.replace(">", "&gt;").replace("<", "&lt;")
         try:
             sent_message = await bot.send_message(chat_id=user_id, text="_", disable_notification=True)
             await bot.delete_message(chat_id=user_id, message_id=sent_message.message_id)
