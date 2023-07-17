@@ -29,6 +29,8 @@ async def get_items():
                     section = section.find_all("a", class_=re.compile(r"styles_wrapper__[a-zA-Z0-9]+$"))[:2]
                     for element in section:
                         title = element.text
+                        if "<" in title or ">" in title:
+                            title = title.replace(">", "&gt;").replace("<", "&lt;")
                         link = element.get("href")
                         item = f"{title} {link}"
                         if item[:20] not in request['user_items']:
@@ -57,6 +59,8 @@ async def get_items():
                     section = section.find_all("a", class_=re.compile(r"styles_wrapper__[a-zA-Z0-9]+$"))
                     for element in section:
                         title = element.text
+                        if "<" in title or ">" in title:
+                            title = title.replace(">", "&gt;").replace("<", "&lt;")
                         link = element.get("href")
                         item = f"{title} {link}"
                         if item[:20] not in request['user_items']:
