@@ -19,7 +19,7 @@ async def get_items():
     await bot.send_message(chat_id=admin_id, text='цикл запущен')
     while True:
         for user_id, request in users_requests_db.copy().items():
-            print(user_id, request)
+            print(user_id)
             # Запрашиваем HTML-код страницы
             if request['request'].startswith('https:'):
                 result = requests.get(f"{request['request']}")
