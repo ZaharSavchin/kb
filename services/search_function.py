@@ -19,6 +19,7 @@ async def get_items():
     await bot.send_message(chat_id=admin_id, text='цикл запущен')
     while True:
         for user_id, request in users_requests_db.copy().items():
+            print(user_id, request)
             # Запрашиваем HTML-код страницы
             if request['request'].startswith('https:'):
                 result = requests.get(f"{request['request']}")
@@ -70,7 +71,8 @@ async def get_items():
                                 image_url = re.search('data-src="(.*?)"', str(element)).group(1)
                                 await bot.send_photo(chat_id=user_id, photo=image_url, caption=item)
                                 # requests.get(f'{API_URL}{BOT_TOKEN}/sendPhoto?chat_id={user_id}&photo={image_url}&caption={item}')
-                            except AttributeError:
+                            except Exception as e:
+                                print(f'e={e}')
                                 try:
                                     await bot.send_message(chat_id=user_id, text=item)
                                 except Exception as err:

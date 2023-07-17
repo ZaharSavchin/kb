@@ -87,6 +87,7 @@ async def clear_users(message: Message):
             sent_message = await bot.send_message(chat_id=user_id, text="_", disable_notification=True)
             await bot.delete_message(chat_id=user_id, message_id=sent_message.message_id)
         except Exception as e:
+            print(e)
             users_to_delete[user_id] = name
         # await asyncio.sleep(0.05)
     # print(users_to_delete)
