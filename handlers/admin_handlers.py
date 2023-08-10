@@ -5,7 +5,7 @@ from aiogram.filters import Text
 from aiogram import Router, F
 from aiogram.types import Message, CallbackQuery
 from database.database import users_requests_db, users_db, save_users_db, save_users_requests_db, usernames_db
-from services.search_function import get_items
+from services.search_function import get_items, test_time
 from keyboards.delete_kb import create_delete_users_keyboard
 
 from config_data.config import Config, load_config
@@ -130,10 +130,6 @@ async def cansel(callback: CallbackQuery):
     await callback.answer("удаление отменено")
 
 
-
-
-
-
-
-
-
+@router.message(F.text == 'bot test time')
+async def test_time_users(message: Message):
+    await test_time()
