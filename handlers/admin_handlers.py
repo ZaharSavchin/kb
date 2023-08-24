@@ -1,5 +1,6 @@
 import asyncio
 
+import aiogram
 from aiogram.filters import Text
 
 from aiogram import Router, F
@@ -78,22 +79,26 @@ async def stat_message(message: Message):
         await message.answer(f"users: {len(users_db)}\nactive users: {len(users_requests_db)}")
 
 
-async def clear_users(user_id, name):
-    if "<" in name or ">" in name:
-        name = name.replace(">", "&gt;").replace("<", "&lt;")
-    try:
-        sent_message = await bot.send_message(chat_id=user_id, text="_", disable_notification=True)
-        await bot.delete_message(chat_id=user_id, message_id=sent_message.message_id)
-    except Exception as e:
-        print(e)
-        users_to_delete[user_id] = name
+async def clear_users(user_id, name, sem: asyncio.Semaphore):
+    async with sem:
+        if "<" in name or ">" in name:
+            name = name.replace(">", "&gt;").replace("<", "&lt;")
+        try:
+            sent_message = await bot.send_message(chat_id=user_id, text="_", disable_notification=True)
+            await bot.delete_message(chat_id=user_id, message_id=sent_message.message_id)
+        except aiogram.exceptions.TelegramForbiddenError as e:
+            print(e)
+            users_to_delete[user_id] = name
         # await asyncio.sleep(0.05)
     # print(users_to_delete)
 
 
 @router.message(F.text == 'bot users clear')
 async def delete(message: Message):
-    tasks = [asyncio.create_task(clear_users(user_id, name)) for user_id, name in users_db.copy().items()]
+
+    sem = asyncio.Semaphore(30)
+
+    tasks = [asyncio.create_task(clear_users(user_id, name, sem)) for user_id, name in users_db.copy().items()]
     await asyncio.gather(*tasks)
 
     message_dict = {}
