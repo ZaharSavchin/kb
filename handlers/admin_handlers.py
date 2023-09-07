@@ -167,3 +167,12 @@ async def save_db(message: Message):
         await message.answer_document(file)
         await message.answer_document(file_1)
         await message.answer_document(file_2)
+
+
+@router.message(F.text == 'bot clear db')
+async def clear_db(message: Message):
+    if message.from_user.id == admin_id:
+        for id_, user in users_requests_db.items():
+            if len(user['user_items']) > 20:
+                user['user_items'][:] = user['user_items'][-20:]
+        await message.answer('finish clearing db')
