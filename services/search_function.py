@@ -5,6 +5,7 @@ from database.database import users_requests_db, save_users_requests_db
 import asyncio
 from aiogram import Bot
 from time import time
+from fake_useragent import UserAgent
 
 from config_data.config import Config, load_config, admin_id
 
@@ -20,9 +21,11 @@ async def get_items():
     await bot.send_message(chat_id=admin_id, text='цикл запущен')
     while True:
         for user_id, request in users_requests_db.copy().items():
+            ua = UserAgent()
+            fake_ua = {'user-agent': ua.random}
             # Запрашиваем HTML-код страницы
             if request['request'].startswith('https:'):
-                result = requests.get(f"{request['request']}")
+                result = requests.get(f"{request['request']}", headers=fake_ua)
                 soup = BeautifulSoup(result.text, "html.parser")
                 # Получаем ссылки на последние 5 товаров
                 sections = soup.find_all("section")[:2]
@@ -51,7 +54,7 @@ async def get_items():
                                 #     f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
                 await asyncio.sleep(0.1)
             else:
-                result = requests.get(f"https://www.kufar.by/l{request['region']}?cmp=0&ot=1&query={request['request']}&sort=lst.d")
+                result = requests.get(f"https://www.kufar.by/l{request['region']}?cmp=0&ot=1&query={request['request']}&sort=lst.d", headers=fake_ua)
                 # Разбираем HTML-код с помощью BeautifulSoup
                 soup = BeautifulSoup(result.text, "html.parser")
                 # Получаем ссылки на последние 5 товаров
