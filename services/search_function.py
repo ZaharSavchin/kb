@@ -35,7 +35,7 @@ async def get_items():
                         title = element.text
                         if "<" in title or ">" in title:
                             title = title.replace(">", "&gt;").replace("<", "&lt;")
-                        link = element.get("href")
+                        link = element.get("href").split('?')[0]
                         item = f"{title} {link}"
                         if item[:20] not in request['user_items']:
                             request['user_items'].append(item[:20])
@@ -65,7 +65,7 @@ async def get_items():
                         title = element.text
                         if "<" in title or ">" in title:
                             title = title.replace(">", "&gt;").replace("<", "&lt;")
-                        link = element.get("href")
+                        link = element.get("href").split('?')[0]
                         item = f"{title} {link}"
                         if item[:20] not in request['user_items']:
                             request['user_items'].append(item[:20])
