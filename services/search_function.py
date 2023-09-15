@@ -53,7 +53,7 @@ async def get_items():
                                         print(err)
                                     # requests.get(
                                     #     f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
-                    await asyncio.sleep(0.5)
+                    await asyncio.sleep(0.1)
                 else:
                     result = requests.get(f"https://www.kufar.by/l{request['region']}?cmp=0&ot=1&query={request['request']}&sort=lst.d", headers=fake_ua, timeout=3)
                     # Разбираем HTML-код с помощью BeautifulSoup
@@ -81,7 +81,7 @@ async def get_items():
                                     except Exception as err:
                                         print(err)
                                     # requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
-                    await asyncio.sleep(0.5)
+                    await asyncio.sleep(0.1)
             except Exception as err:
                 print(err)
             await asyncio.sleep(5)
