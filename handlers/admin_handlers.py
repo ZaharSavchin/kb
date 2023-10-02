@@ -189,7 +189,7 @@ async def stat_message(message: Message):
     while True:
         await new_search_monitor(num_sem)
         counter += 1
-        if counter == 1 or counter % 20 == 0:
+        if counter == 1 or counter % 10 == 0:
             await bot.send_message(chat_id=admin_id, text=f'{counter}')
         await asyncio.sleep(pause)
 
