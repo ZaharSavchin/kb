@@ -9,11 +9,13 @@ from aiogram import Router, F
 from aiogram.types import Message, CallbackQuery, FSInputFile
 from database.database import users_requests_db, users_db, save_users_db, save_users_requests_db, usernames_db
 from services.search_function import get_items, test_time
+from services.new_search_function import new_search_monitor
 from keyboards.delete_kb import create_delete_users_keyboard
 from config_data.config import admin_id
 
 from config_data.config import Config, load_config
 from aiogram import Bot
+
 
 r = redis.Redis(host='127.0.0.1', port=6379, db=1)
 
@@ -176,3 +178,18 @@ async def clear_db(message: Message):
             if len(user['user_items']) > 20:
                 user['user_items'][:] = user['user_items'][-20:]
         await message.answer('finish clearing db')
+
+
+@router.message(F.text.startswith('bot_new_search'))
+async def stat_message(message: Message):
+    num_sem = int(message.text.split()[1])
+    pause = int(message.text.split()[2])
+    await message.answer(f'start bot_new_search, {num_sem}, {pause}')
+    counter = 0
+    while True:
+        await new_search_monitor(num_sem)
+        counter += 1
+        if counter == 1 or counter % 20 == 0:
+            await bot.send_message(chat_id=admin_id, text=f'{counter}')
+        await asyncio.sleep(pause)
+
