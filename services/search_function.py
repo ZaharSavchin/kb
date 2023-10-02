@@ -80,7 +80,6 @@ async def get_items():
                                     print(err)
                                 # requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={user_id}&text={item}')
                 await asyncio.sleep(0.1)
-            counter += 1
 
 
 async def test_time():
@@ -89,7 +88,7 @@ async def test_time():
         start_time = time()
         # Запрашиваем HTML-код страницы
         if request['request'].startswith('https:'):
-            result = requests.get(f"{request['request']}", timeout=3)
+            result = requests.get(f"{request['request']}")
             soup = BeautifulSoup(result.text, "html.parser")
             # Получаем ссылки на последние 5 товаров
             sections = soup.find_all("section")[:2]
