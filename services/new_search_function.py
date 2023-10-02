@@ -3,6 +3,7 @@ import asyncio
 from bs4 import BeautifulSoup
 from services.search_function import bot
 from database.database import users_requests_db
+from config_data.config import admin_id
 
 
 async def new_search(session: aiohttp.ClientSession, sem, user_id, request):
@@ -18,7 +19,10 @@ async def new_search(session: aiohttp.ClientSession, sem, user_id, request):
                 price = item.find('p').text
                 if '$' in price:
                     price = price.split('р.')[1]
-                name = item.find('h3').text
+                try:
+                    name = item.find('h3').text
+                except Exception:
+                    await bot.send_message(admin_id, url)
                 city = item.find_all('p')[1].text
                 link = item.find('a')['href'].split('?')[0]
                 message = f'{price}\n{name}\n{city}\n{link}'
