@@ -1,3 +1,5 @@
+import re
+
 import aiohttp
 import asyncio
 from bs4 import BeautifulSoup
@@ -14,31 +16,31 @@ async def new_search(session: aiohttp.ClientSession, sem, user_id, request):
         async with session.get(url) as response:
             resp = await response.text()
             soup = BeautifulSoup(resp, 'html.parser')
-            items = soup.find_all('section')[:4]
-            for item in items:
-                price = item.find('p').text
-                if '$' in price:
-                    price = price.split('р.')[1]
-                try:
-                    name = item.find('h3').text
-                except Exception:
-                    await bot.send_message(admin_id, url)
-                city = item.find_all('p')[1].text
-                link = item.find('a')['href'].split('?')[0]
-                message = f'{price}\n{name}\n{city}\n{link}'
-                if "<" in message or ">" in message:
-                    message = message.replace(">", "&gt;").replace("<", "&lt;")
-                if message not in request['user_items']:
-                    request['user_items'].append(message)
-                    try:
-                        img = item.find('img')['data-src']
-                        await bot.send_photo(chat_id=user_id, photo=img, caption=message)
-                    except Exception as err:
-                        print(err)
-                        try:
-                            await bot.send_message(chat_id=user_id, text=message)
-                        except Exception as e:
-                            print(e)
+            sections = soup.find_all("section")[:4]
+            for section in sections:
+                section = section.find_all("a", class_=re.compile(r"styles_wrapper__[a-zA-Z0-9]+$"))
+                for element in section:
+                    title = element.text
+                    if len(title) > 300:
+                        title = f'{title[:300]}...'
+                    if "<" in title or ">" in title:
+                        title = title.replace(">", "&gt;").replace("<", "&lt;")
+                    link = element.get("href").split('?')[0]
+                    item = f"{title}\n{link}"
+                    check = item
+                    if '$' in title:
+                        check = link
+                    if check not in request['user_items']:
+                        request['user_items'].append(check)
+#                        try:
+#                            image_url = re.search('data-src="(.*?)"', str(element)).group(1)
+#                            await bot.send_photo(chat_id=user_id, photo=image_url, caption=item)
+#                        except Exception as e:
+#                            print(f'e={e}')
+#                            try:
+#                                await bot.send_message(chat_id=user_id, text=item)
+#                            except Exception as err:
+#                                print(err)
 
 
 async def new_search_monitor(num_sem):
