@@ -10,9 +10,9 @@ from config_data.config import admin_id
 
 async def new_search(session: aiohttp.ClientSession, sem, user_id, request):
     async with sem:
-        url = request['request']
-        if not request['request'].startswith('https:'):
-            url = f"https://www.kufar.by/l{request['region']}?cmp=0&ot=1&query={request['request']}&sort=lst.d"
+        url = f"https://www.kufar.by/l{request['region']}?cmp=0&ot=1&query={request['request']}&sort=lst.d"
+        if request['request'].startswith('https:') and 'kufar' in request['request']:
+            url = request['request']
         async with session.get(url) as response:
             resp = await response.text()
             soup = BeautifulSoup(resp, 'html.parser')
@@ -32,15 +32,15 @@ async def new_search(session: aiohttp.ClientSession, sem, user_id, request):
                         check = link
                     if check not in request['user_items']:
                         request['user_items'].append(check)
-#                        try:
-#                            image_url = re.search('data-src="(.*?)"', str(element)).group(1)
-#                            await bot.send_photo(chat_id=user_id, photo=image_url, caption=item)
-#                        except Exception as e:
-#                            print(f'e={e}')
-#                            try:
-#                                await bot.send_message(chat_id=user_id, text=item)
-#                            except Exception as err:
-#                                print(err)
+                        try:
+                            image_url = re.search('data-src="(.*?)"', str(element)).group(1)
+                            await bot.send_photo(chat_id=user_id, photo=image_url, caption=item)
+                        except Exception as e:
+                            print(f'e={e}')
+                            try:
+                                await bot.send_message(chat_id=user_id, text=item)
+                            except Exception as err:
+                                print(err)
 
 
 async def new_search_monitor(num_sem):
