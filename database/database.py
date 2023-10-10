@@ -15,8 +15,8 @@ users_requests_db: Dict[int, Dict[str, Union[str, List[str]]]] = {}
 # users_requests_db: Dict[int, Dict[str, Union[str, List[str]]]] = {
 #     686811658: {
 #         'name': 'Nikolay Sirosh',
-#         'request': 'iphone',
-#         'region': ''
+#         'request': ['iphone'],
+#         'region': ['']
 #         'user_items': ['itm1', 'itm2', 'itm3']
 #     },
 #     965855365: {
@@ -25,6 +25,8 @@ users_requests_db: Dict[int, Dict[str, Union[str, List[str]]]] = {}
 #         'region': ''
 #         'user_items': ['itm1', 'itm2', 'itm3']
 
+users_max_items: [int, int] = {}
+# users_max_items: [int, int] = {5754662958: 1, 6031519620: 3}
 
 # Подключение к Redis
 # r = redis.Redis(host='localhost', port=6379, db=3)
@@ -54,6 +56,13 @@ if user_requests_json is not None:
 else:
     users_requests_db = {}
 
+users_max_items_json = r.get('users_max_items')
+if users_max_items_json is not None:
+    users_max_items = json.loads(users_max_items_json)
+    users_max_items = {int(k): int(v) for k, v in users_max_items.items()}
+else:
+    users_max_items = {}
+
 
 # Функция для сохранения словаря в Redis
 async def save_users_db():
@@ -68,6 +77,5 @@ async def save_users_requests_db():
     r.set('users_requests', json.dumps(users_requests_db))
 
 
-
-
-
+async def save_users_max_items():
+    r.set('users_max_items', json.dumps(users_max_items))

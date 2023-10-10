@@ -3,7 +3,9 @@ import asyncio
 from aiogram import Bot, Dispatcher
 from config_data.config import Config, load_config, admin_id
 from keyboards.main_menu import set_main_menu
-from handlers import other_handlers, user_handlers, admin_handlers, regions_handlers, ads_handler
+from handlers import (other_handlers, user_handlers, admin_handlers,
+                      regions_handlers, ads_handler, change_max_items_handler,
+                      delete_item_handler)
 
 
 async def main():
@@ -25,6 +27,8 @@ async def main():
     dp.include_router(user_handlers.router)
     dp.include_router(regions_handlers.router)
     dp.include_router(other_handlers.router)
+    dp.include_router(change_max_items_handler.router)
+    dp.include_router(delete_item_handler.router)
 
     await dp.start_polling(bot, polling_timeout=30)
 

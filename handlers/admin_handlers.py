@@ -6,12 +6,15 @@ import json
 from aiogram.filters import Text
 
 from aiogram import Router, F
-from aiogram.types import Message, CallbackQuery, FSInputFile
-from database.database import users_requests_db, users_db, save_users_db, save_users_requests_db, usernames_db
+from aiogram.filters.callback_data import CallbackData
+from aiogram.types import Message, CallbackQuery, FSInputFile, InlineKeyboardButton, InlineKeyboardMarkup
+from database.database import (users_requests_db, users_db, save_users_db, save_users_requests_db,
+                               usernames_db, users_max_items, save_users_max_items)
 from services.search_function import get_items, test_time
-from services.new_search_function import new_search_monitor
+from services.new_search_function import new_search_monitor, vip_new_search_monitor
 from keyboards.delete_kb import create_delete_users_keyboard
 from config_data.config import admin_id
+import database
 
 from config_data.config import Config, load_config
 from aiogram import Bot
@@ -163,20 +166,25 @@ async def save_db(message: Message):
         with open('user_requests.json', 'w', encoding='utf-8-sig') as fl:
             json.dump(users_requests_db, fl, indent=4, ensure_ascii=False)
 
+        with open('users_max_items.json', 'w', encoding='utf-8-sig') as fl:
+            json.dump(users_max_items, fl, indent=4, ensure_ascii=False)
+
         file = FSInputFile('user_dict.json')
         file_1 = FSInputFile('usernames_dict.json')
         file_2 = FSInputFile('user_requests.json')
+        file_3 = FSInputFile('users_max_items.json')
         await message.answer_document(file)
         await message.answer_document(file_1)
         await message.answer_document(file_2)
+        await message.answer_document(file_3)
 
 
 @router.message(F.text == 'bot clear db')
 async def clear_db(message: Message):
     if message.from_user.id == admin_id:
         for id_, user in users_requests_db.items():
-            if len(user['user_items']) > 20:
-                user['user_items'][:] = user['user_items'][-20:]
+            if len(user['user_items']) > 100:
+                user['user_items'][:] = user['user_items'][-100:]
         await message.answer('finish clearing db')
 
 
@@ -194,3 +202,66 @@ async def stat_message(message: Message):
         await save_users_requests_db()
         await asyncio.sleep(pause)
 
+
+@router.message(F.text.startswith('vip_bot_new_search'))
+async def stat_message(message: Message):
+    num_sem = int(message.text.split()[1])
+    pause = int(message.text.split()[2])
+    await message.answer(f'start vip_bot_new_search, {num_sem}, {pause}')
+    counter = 0
+    while True:
+        await vip_new_search_monitor(num_sem)
+        counter += 1
+        if counter == 1 or counter % 25 == 0:
+            await bot.send_message(chat_id=admin_id, text=f'vip {counter}')
+        await asyncio.sleep(pause)
+
+
+class MaxItemsCallbackFactory(CallbackData, prefix='max_items'):
+    user_id: int
+    change: str
+
+
+@router.message(F.text.startswith('bot change max_items'))
+async def change_max_items(message: Message):
+    id_ = int(message.text.split()[-1])
+    name = users_db[id_]
+    if "<" in name or ">" in name:
+        name = name.replace(">", "&gt;").replace("<", "&lt;")
+    username = f'@{usernames_db[id_]}'
+    if "<" in username or ">" in username:
+        username = username.replace(">", "&gt;").replace("<", "&lt;")
+    slots = users_max_items[id_]
+    request = 'запросов нет'
+    if id_ in users_requests_db:
+        request = users_requests_db[id_]['request']
+    text = (f'{id_}\n'
+            f'{name}, {username}\n'
+            f'slots = {slots}\n'
+            f'{request}')
+
+    button_plus = InlineKeyboardButton(text='+', callback_data=MaxItemsCallbackFactory(user_id=id_, change='+').pack())
+    button_minus = InlineKeyboardButton(text='-', callback_data=MaxItemsCallbackFactory(user_id=id_, change='-').pack())
+    markup = InlineKeyboardMarkup(inline_keyboard=[[button_minus, button_plus]])
+
+    await message.answer(text=text, reply_markup=markup)
+
+
+@router.message(F.text == 'bot change db')
+async def change_db(message: Message):
+    for id_, request in users_requests_db.items():
+        req = request['request']
+        region = request['region']
+
+        request['request'] = [req]
+        request['region'] = [region]
+    await message.answer('change db complete!')
+    await save_users_requests_db()
+
+
+@router.message(F.text == 'bot write max_items')
+async def change_max_items(message: Message):
+    for id_, name in users_db.items():
+        users_max_items[id_] = 1
+    await save_users_max_items()
+    await message.answer('finish max_items!')
