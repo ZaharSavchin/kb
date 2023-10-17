@@ -15,6 +15,9 @@ from config_data.config import admin_id
 
 router = Router()
 
+button = InlineKeyboardButton(text='Докупить слоты и ускорить отслеживание', callback_data='slots')
+slots_button = InlineKeyboardMarkup(inline_keyboard=[[button]])
+
 
 async def start_notification(user_id, name, username):
     if user_id not in users_db:
@@ -101,7 +104,8 @@ async def get_list_of_items(message: Message):
     if user_id not in users_requests_db:
         await message.answer('У Вас ничего не отслеживается\n'
                              'отправьте боту запрос или ссылку для отслеживания')
-        await message.answer(f'всего слотов для отслеживания: {users_max_items[user_id]}\n')
+        await message.answer(f'всего слотов для отслеживания: {users_max_items[user_id]}\n',
+                             reply_markup=slots_button)
     else:
         for req, reg in zip(users_requests_db[user_id]['request'], users_requests_db[user_id]['region']):
             request_ = req
@@ -131,7 +135,8 @@ async def get_list_of_items(message: Message):
             else:
                 await message.answer(f'{req} ({LEXICON_REGIONS[reg]})', reply_markup=markup)
         await message.answer(f'всего слотов для отслеживания: {users_max_items[user_id]}\n'
-                             f'свободных слотов: {users_max_items[user_id] - len(users_requests_db[user_id]["request"])}')
+                             f'свободных слотов: {users_max_items[user_id] - len(users_requests_db[user_id]["request"])}',
+                             reply_markup=slots_button)
 
 
 @router.message(F.text == 'my id')
@@ -150,8 +155,9 @@ async def add_request_process(message: Message):
     await save_users_db()
 
     username = message.from_user.username
-    if "<" in username or ">" in username:
-        username = username.replace(">", "&gt;").replace("<", "&lt;")
+    if username:
+        if "<" in username or ">" in username:
+            username = username.replace(">", "&gt;").replace("<", "&lt;")
     usernames_db[user_id] = username
     await save_usernames_db()
 
@@ -186,4 +192,4 @@ async def add_request_process(message: Message):
 
     else:
         await message.answer('У Вас недостаточно слотов,'
-                             ' удалите неактуальные запросы в /list или перезапустите бота /start')
+                             ' удалите неактуальные запросы в /list или перезапустите бота /start', reply_markup=slots_button)
