@@ -6,8 +6,10 @@ from keyboards.main_menu import set_main_menu
 from handlers import (other_handlers, user_handlers, admin_handlers,
                       regions_handlers, ads_handler, change_max_items_handler,
                       delete_item_handler)
+from config_data.logging_utils import logger
 
 
+@logger.catch
 async def main():
     config: Config = load_config()
 
@@ -16,7 +18,7 @@ async def main():
     try:
         await bot.send_message(chat_id=admin_id, text='бот перезапущен')
     except Exception as err:
-        print(err)
+        logger.warning(f'admin blocked bot, {err}, bot.py line19')
 
     dp = Dispatcher()
 

@@ -2,11 +2,13 @@ from aiogram import Router
 from aiogram.filters import Text
 from aiogram.types import Message, CallbackQuery
 from lexicon.lexicon import LEXICON
+from config_data.logging_utils import logger
 
 router = Router()
 
 
 @router.callback_query(Text(text='slots'))
+@logger.catch
 async def by_slots(callback: CallbackQuery):
     user_id = callback.from_user.id
     await callback.message.answer(text=f' - Количество запросов = количество слотов (ячеек для отслеживания)\n'
@@ -19,5 +21,6 @@ async def by_slots(callback: CallbackQuery):
 
 
 @router.message()
+@logger.catch
 async def unknown_message(message: Message):
     await message.answer(LEXICON["/help"])

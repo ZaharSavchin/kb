@@ -11,6 +11,7 @@ from database.database import users_requests_db, users_db, save_users_db, save_u
     usernames_db, save_usernames_db, users_max_items, save_users_max_items
 from keyboards.regions_kb import create_regions_keyboard
 from config_data.config import admin_id
+from config_data.logging_utils import logger
 
 
 router = Router()
@@ -19,6 +20,7 @@ button = InlineKeyboardButton(text='Докупить слоты и ускори�
 slots_button = InlineKeyboardMarkup(inline_keyboard=[[button]])
 
 
+@logger.catch
 async def start_notification(user_id, name, username):
     if user_id not in users_db:
         try:
@@ -27,12 +29,14 @@ async def start_notification(user_id, name, username):
             print(err)
 
 
+@logger.catch
 async def extract_unique_code(text):
     # Extracts the unique_code from the sent /start command.
     return text.split()[1] if len(text.split()) > 1 else None
 
 
 @router.message(CommandStart())
+@logger.catch
 async def process_start_command(message: Message):
     if message.from_user.id not in users_max_items:
         users_max_items[message.from_user.id] = 1
@@ -62,6 +66,7 @@ async def process_start_command(message: Message):
 
 
 @router.message(Command(commands='help'))
+@logger.catch
 async def process_help_command(message: Message):
     usernames_db[message.from_user.id] = message.from_user.username
     await save_usernames_db()
@@ -71,6 +76,7 @@ async def process_help_command(message: Message):
 
 
 @router.message(Command(commands='donat'))
+@logger.catch
 async def process_donat_command(message: Message):
     usernames_db[message.from_user.id] = message.from_user.username
     await save_usernames_db()
@@ -79,6 +85,7 @@ async def process_donat_command(message: Message):
 
 
 @router.message(Command(commands='stop'))
+@logger.catch
 async def process_stop_command(message: Message):
     usernames_db[message.from_user.id] = message.from_user.username
     await save_usernames_db()
@@ -98,6 +105,7 @@ class DeleteCallbackFactory(CallbackData, prefix='itm'):
 
 
 @router.message(Command(commands='list'))
+@logger.catch
 async def get_list_of_items(message: Message):
     user_id = message.from_user.id
 
@@ -140,11 +148,13 @@ async def get_list_of_items(message: Message):
 
 
 @router.message(F.text == 'my id')
+@logger.catch
 async def get_my_id(message: Message):
     await message.answer(f'{message.from_user.id}')
 
 
 @router.message(F.text)
+@logger.catch
 async def add_request_process(message: Message):
     user_id = message.from_user.id
 
@@ -159,6 +169,9 @@ async def add_request_process(message: Message):
         if "<" in username or ">" in username:
             username = username.replace(">", "&gt;").replace("<", "&lt;")
     usernames_db[user_id] = username
+
+    logger.info(f'@{username}, {full_name}, {user_id} = {message.text}')
+
     await save_usernames_db()
 
     if user_id not in users_requests_db:

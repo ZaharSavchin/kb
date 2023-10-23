@@ -8,6 +8,7 @@ from time import time
 from fake_useragent import UserAgent
 
 from config_data.config import Config, load_config, admin_id
+from config_data.logging_utils import logger
 
 
 API_URL: str = 'https://api.telegram.org/bot'
@@ -17,6 +18,7 @@ BOT_TOKEN = config.tg_bot.token
 bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
 
 
+@logger.catch
 async def get_items():
     await bot.send_message(chat_id=admin_id, text='цикл запущен, start')
     while True:
@@ -82,6 +84,7 @@ async def get_items():
                 await asyncio.sleep(0.1)
 
 
+@logger.catch
 async def test_time():
     counter = 1
     for user_id, request in users_requests_db.copy().items():

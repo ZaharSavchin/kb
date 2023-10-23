@@ -1,0 +1,253 @@
+2023-10-23T09:54:00.978578+0300 WARNING bot stat all
+2023-10-23T09:56:23.432540+0300 INFO @help_enot, тех поддержка Бота-Енота, 6031519620 = авто
+2023-10-23T09:56:28.733602+0300 ERROR An error has been caught in function '_replace_cdata_list_attribute_values', process 'MainProcess' (11928), thread 'MainThread' (7304):
+Traceback (most recent call last):
+
+  File "C:\Users\zman-\PycharmProjects\kufar\bot.py", line 39, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x0000018E2CC60540>
+    │       └ <function run at 0x0000018E295F1940>
+    └ <module 'asyncio' from 'C:\\Users\\zman-\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x0000018E2CC2EE40>
+           │      └ <function Runner.run at 0x0000018E2965D8A0>
+           └ <asyncio.runners.Runner object at 0x0000018E2B7C7790>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<main() running at C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\loguru\_logge...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x0000018E2965B380>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x0000018E2B7C7790>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 640, in run_until_complete
+    self.run_forever()
+    │    └ <function ProactorEventLoop.run_forever at 0x0000018E29723380>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 607, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x0000018E2965D120>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1922, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x0000018E295A68E0>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+
+  File "C:\Users\zman-\PycharmProjects\kufar\services\new_search_function.py", line 22, in new_search
+    soup = BeautifulSoup(resp, 'html.parser')
+           │             └ '<!DOCTYPE html><html lang="ru"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><title>Куфар...
+           └ <class 'bs4.BeautifulSoup'>
+
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\bs4\__init__.py", line 334, in __init__
+    self._feed()
+    │    └ <function BeautifulSoup._feed at 0x0000018E2BB02020>
+    └ <!DOCTYPE html>
+      <html lang="ru"><head><meta charset="utf-8"/><meta content="width=device-width" name="viewport"/><title>Куфар...
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\bs4\__init__.py", line 453, in _feed
+    self.builder.feed(self.markup)
+    │    │       │    │    └ '<!DOCTYPE html><html lang="ru"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><title>Куфар...
+    │    │       │    └ <!DOCTYPE html>
+    │    │       │      <html lang="ru"><head><meta charset="utf-8"/><meta content="width=device-width" name="viewport"/><title>Куфар...
+    │    │       └ <function HTMLParserTreeBuilder.feed at 0x0000018E2BB01A80>
+    │    └ <bs4.builder._htmlparser.HTMLParserTreeBuilder object at 0x0000018E2DE76A90>
+    └ <!DOCTYPE html>
+      <html lang="ru"><head><meta charset="utf-8"/><meta content="width=device-width" name="viewport"/><title>Куфар...
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\bs4\builder\_htmlparser.py", line 380, in feed
+    parser.feed(markup)
+    │      │    └ '<!DOCTYPE html><html lang="ru"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><title>Куфар...
+    │      └ <function HTMLParser.feed at 0x0000018E2BB00360>
+    └ <bs4.builder._htmlparser.BeautifulSoupHTMLParser object at 0x0000018E2E22AA90>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\html\parser.py", line 110, in feed
+    self.goahead(0)
+    │    └ <function HTMLParser.goahead at 0x0000018E2BB00680>
+    └ <bs4.builder._htmlparser.BeautifulSoupHTMLParser object at 0x0000018E2E22AA90>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\html\parser.py", line 170, in goahead
+    k = self.parse_starttag(i)
+        │    │              └ 249543
+        │    └ <function HTMLParser.parse_starttag at 0x0000018E2BB00900>
+        └ <bs4.builder._htmlparser.BeautifulSoupHTMLParser object at 0x0000018E2E22AA90>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\html\parser.py", line 335, in parse_starttag
+    self.handle_startendtag(tag, attrs)
+    │    │                  │    └ [('width', '100%'), ('height', '100%'), ('src', 'https://content.kufar.by/static/frontend/svg/footer/apple_v2.svg'), ('alt', ...
+    │    │                  └ 'img'
+    │    └ <function BeautifulSoupHTMLParser.handle_startendtag at 0x0000018E2BB011C0>
+    └ <bs4.builder._htmlparser.BeautifulSoupHTMLParser object at 0x0000018E2E22AA90>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\bs4\builder\_htmlparser.py", line 102, in handle_startendtag
+    tag = self.handle_starttag(name, attrs, handle_empty_element=False)
+          │    │               │     └ [('width', '100%'), ('height', '100%'), ('src', 'https://content.kufar.by/static/frontend/svg/footer/apple_v2.svg'), ('alt', ...
+          │    │               └ 'img'
+          │    └ <function BeautifulSoupHTMLParser.handle_starttag at 0x0000018E2BB01260>
+          └ <bs4.builder._htmlparser.BeautifulSoupHTMLParser object at 0x0000018E2E22AA90>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\bs4\builder\_htmlparser.py", line 137, in handle_starttag
+    tag = self.soup.handle_starttag(
+          │    │    └ <function BeautifulSoup.handle_starttag at 0x0000018E2BB02840>
+          │    └ <!DOCTYPE html>
+          │      <html lang="ru"><head><meta charset="utf-8"/><meta content="width=device-width" name="viewport"/><title>Куфар...
+          └ <bs4.builder._htmlparser.BeautifulSoupHTMLParser object at 0x0000018E2E22AA90>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\bs4\__init__.py", line 723, in handle_starttag
+    tag = self.element_classes.get(Tag, Tag)(
+          │    │               │   │    └ <class 'bs4.element.Tag'>
+          │    │               │   └ <class 'bs4.element.Tag'>
+          │    │               └ <method 'get' of 'dict' objects>
+          │    └ {}
+          └ <!DOCTYPE html>
+            <html lang="ru"><head><meta charset="utf-8"/><meta content="width=device-width" name="viewport"/><title>Куфар...
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\bs4\element.py", line 1252, in __init__
+    attrs = builder._replace_cdata_list_attribute_values(
+            │       └ <function TreeBuilder._replace_cdata_list_attribute_values at 0x0000018E2BADA480>
+            └ <bs4.builder._htmlparser.HTMLParserTreeBuilder object at 0x0000018E2DE76A90>
+> File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\bs4\builder\__init__.py", line 314, in _replace_cdata_list_attribute_values
+    for attr in list(attrs.keys()):
+                     │     └ <method 'keys' of 'dict' objects>
+                     └ {'width': '100%', 'height': '100%', 'src': 'https://content.kufar.by/static/frontend/svg/footer/apple_v2.svg', 'alt': 'apple'}
+
+RuntimeError: coroutine ignored GeneratorExit
+2023-10-23T10:01:04.850868+0300 WARNING bot stat all
+2023-10-23T10:02:18.882381+0300 INFO @help_enot, тех поддержка Бота-Енота, 6031519620 = мопед
+2023-10-23T10:07:34.601247+0300 WARNING bot stat all
+2023-10-23T10:07:45.053047+0300 ERROR An error has been caught in function 'call', process 'MainProcess' (4328), thread 'MainThread' (7100):
+Traceback (most recent call last):
+
+  File "C:\Users\zman-\PycharmProjects\kufar\bot.py", line 39, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x000002691153C4A0>
+    │       └ <function run at 0x000002690DF01940>
+    └ <module 'asyncio' from 'C:\\Users\\zman-\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x000002691150AB40>
+           │      └ <function Runner.run at 0x000002690DF6D8A0>
+           └ <asyncio.runners.Runner object at 0x000002690BFE0E50>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<main() running at C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\loguru\_logge...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000002690DF6B380>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000002690BFE0E50>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 640, in run_until_complete
+    self.run_forever()
+    │    └ <function ProactorEventLoop.run_forever at 0x000002690E023380>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 607, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000002690DF6D120>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1922, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000002690DEB68E0>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "C:\Users\zman-\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 297, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+                     │    │           │    │         └ {}
+                     │    │           │    └ Update(update_id=65895036, message=Message(message_id=4745, date=datetime.datetime(2023, 10, 23, 7, 7, 43, tzinfo=datetime.ti...
+                     │    │           └ <aiogram.client.bot.Bot object at 0x000002691154B750>
+                     │    └ <function Dispatcher.feed_update at 0x000002690FF51BC0>
+                     └ <Dispatcher '0x2690e57eb90'>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 146, in feed_update
+    response = await self.update.wrap_outer_middleware(
+                     │    │      └ <function TelegramEventObserver.wrap_outer_middleware at 0x000002690FF50540>
+                     │    └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x000002691156B110>
+                     └ <Dispatcher '0x2690e57eb90'>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+                 │       │      └ {'bot': <aiogram.client.bot.Bot object at 0x000002691154B750>, 'event_from_user': User(id=1042048167, is_bot=False, first_nam...
+                 │       └ Update(update_id=65895036, message=Message(message_id=4745, date=datetime.datetime(2023, 10, 23, 7, 7, 43, tzinfo=datetime.ti...
+                 └ functools.partial(<aiogram.dispatcher.middlewares.user_context.UserContextMiddleware object at 0x000002690E8A0B50>, functools...
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 23, in __call__
+    return await handler(event, data)
+                 │       │      └ {'bot': <aiogram.client.bot.Bot object at 0x000002691154B750>, 'event_from_user': User(id=1042048167, is_bot=False, first_nam...
+                 │       └ Update(update_id=65895036, message=Message(message_id=4745, date=datetime.datetime(2023, 10, 23, 7, 7, 43, tzinfo=datetime.ti...
+                 └ functools.partial(<aiogram.fsm.middleware.FSMContextMiddleware object at 0x000002691156B690>, <function TelegramEventObserver...
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 39, in __call__
+    return await handler(event, data)
+                 │       │      └ {'bot': <aiogram.client.bot.Bot object at 0x000002691154B750>, 'event_from_user': User(id=1042048167, is_bot=False, first_nam...
+                 │       └ Update(update_id=65895036, message=Message(message_id=4745, date=datetime.datetime(2023, 10, 23, 7, 7, 43, tzinfo=datetime.ti...
+                 └ <function TelegramEventObserver.trigger at 0x000002691156D440>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'bot': <aiogram.client.bot.Bot object at 0x000002691154B750>, 'event_from_user': User(id=1042048167, is_bot=False, first_nam...
+                 │             └ Update(update_id=65895036, message=Message(message_id=4745, date=datetime.datetime(2023, 10, 23, 7, 7, 43, tzinfo=datetime.ti...
+                 └ <function CallableMixin.call at 0x000002691156CEA0>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+                 └ functools.partial(<bound method Dispatcher._listen_update of <Dispatcher '0x2690e57eb90'>>, Update(update_id=65895036, messag...
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 264, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+                 │    │                           │                  │        └ {'bot': <aiogram.client.bot.Bot object at 0x000002691154B750>, 'event_from_user': User(id=1042048167, is_bot=False, first_nam...
+                 │    │                           │                  └ Message(message_id=4745, date=datetime.datetime(2023, 10, 23, 7, 7, 43, tzinfo=datetime.timezone.utc), chat=Chat(id=104204816...
+                 │    │                           └ 'message'
+                 │    └ <function Router.propagate_event at 0x000002690FF511C0>
+                 └ <Dispatcher '0x2690e57eb90'>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'bot': <aiogram.client.bot.Bot object at 0x000002691154B750>, 'event_from_user': User(id=1042048167, is_bot=False, first_nam...
+                 │        │                     │               └ Message(message_id=4745, date=datetime.datetime(2023, 10, 23, 7, 7, 43, tzinfo=datetime.timezone.utc), chat=Chat(id=104204816...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x000002691156CB80>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x000002690FF50540>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x000002691154BC10>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x000002690FF51260>
+                 └ <Dispatcher '0x2690e57eb90'>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 131, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+                     │      │                           │                  │        └ {'bot': <aiogram.client.bot.Bot object at 0x000002691154B750>, 'event_from_user': User(id=1042048167, is_bot=False, first_nam...
+                     │      │                           │                  └ Message(message_id=4745, date=datetime.datetime(2023, 10, 23, 7, 7, 43, tzinfo=datetime.timezone.utc), chat=Chat(id=104204816...
+                     │      │                           └ 'message'
+                     │      └ <function Router.propagate_event at 0x000002690FF511C0>
+                     └ <Router '0x269114fe150'>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 115, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+                 │        │                     │               │           └ {'bot': <aiogram.client.bot.Bot object at 0x000002691154B750>, 'event_from_user': User(id=1042048167, is_bot=False, first_nam...
+                 │        │                     │               └ Message(message_id=4745, date=datetime.datetime(2023, 10, 23, 7, 7, 43, tzinfo=datetime.timezone.utc), chat=Chat(id=104204816...
+                 │        │                     └ <function Router.propagate_event.<locals>._wrapped at 0x000002691156D080>
+                 │        └ <function TelegramEventObserver.wrap_outer_middleware at 0x000002690FF50540>
+                 └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x00000269100D0550>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 111, in _wrapped
+    return await self._propagate_event(
+                 │    └ <function Router._propagate_event at 0x000002690FF51260>
+                 └ <Router '0x269114fe150'>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 124, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+                     │        │       │        └ {'bot': <aiogram.client.bot.Bot object at 0x000002691154B750>, 'event_from_user': User(id=1042048167, is_bot=False, first_nam...
+                     │        │       └ Message(message_id=4745, date=datetime.datetime(2023, 10, 23, 7, 7, 43, tzinfo=datetime.timezone.utc), chat=Chat(id=104204816...
+                     │        └ <function TelegramEventObserver.trigger at 0x000002690FF505E0>
+                     └ <aiogram.dispatcher.event.telegram.TelegramEventObserver object at 0x00000269100D0550>
+  File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 123, in trigger
+    return await wrapped_inner(event, kwargs)
+                 │             │      └ {'bot': <aiogram.client.bot.Bot object at 0x000002691154B750>, 'event_from_user': User(id=1042048167, is_bot=False, first_nam...
+                 │             └ Message(message_id=4745, date=datetime.datetime(2023, 10, 23, 7, 7, 43, tzinfo=datetime.timezone.utc), chat=Chat(id=104204816...
+                 └ <function CallableMixin.call at 0x000002691156D580>
+> File "C:\Users\zman-\PycharmProjects\kufar\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 42, in call
+    return await wrapped()
+                 └ functools.partial(<function get_list_of_items at 0x00000269115242C0>, Message(message_id=4745, date=datetime.datetime(2023, 1...
+
+  File "C:\Users\zman-\PycharmProjects\kufar\handlers\user_handlers.py", line 115, in get_list_of_items
+    await message.answer(f'всего слотов для отслеживания: {users_max_items[user_id]}\n',
+          │       └ <function Message.answer at 0x000002690F7EAA20>
+          └ Message(message_id=4745, date=datetime.datetime(2023, 10, 23, 7, 7, 43, tzinfo=datetime.timezone.utc), chat=Chat(id=104204816...
+
+KeyError: 1042048167
+2023-10-23T10:10:12.217313+0300 INFO @None, Zahar, 1042048167 = авто
+2023-10-23T10:10:43.546923+0300 INFO @pchelovod_belarus, Захар Пчеловод&lt;, 5754662958 = мото

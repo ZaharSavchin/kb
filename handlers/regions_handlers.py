@@ -5,6 +5,7 @@ from database.database import users_requests_db, save_users_requests_db
 from lexicon.lexicon import LEXICON_REGIONS
 
 from config_data.config import Config, load_config
+from config_data.logging_utils import logger
 
 
 config: Config = load_config()
@@ -16,6 +17,7 @@ router = Router()
 
 
 @router.callback_query(Text(text='all'))
+@logger.catch
 async def process_forward_press(callback: CallbackQuery):
     try:
         await callback.message.delete()
@@ -34,6 +36,7 @@ async def process_forward_press(callback: CallbackQuery):
 
 
 @router.callback_query(Text(text='/r~minsk'))
+@logger.catch
 async def minsk(callback: CallbackQuery):
     try:
         await callback.message.delete()
@@ -52,6 +55,7 @@ async def minsk(callback: CallbackQuery):
 
 
 @router.callback_query(Text(text='/r~minskaya-obl'))
+@logger.catch
 async def minsk_obl(callback: CallbackQuery):
     try:
         await callback.message.delete()
@@ -70,6 +74,7 @@ async def minsk_obl(callback: CallbackQuery):
 
 
 @router.callback_query(Text(text='/r~brestskaya-obl'))
+@logger.catch
 async def brest(callback: CallbackQuery):
     try:
         await callback.message.delete()
@@ -88,6 +93,7 @@ async def brest(callback: CallbackQuery):
 
 
 @router.callback_query(Text(text='/r~grodnenskaya-obl'))
+@logger.catch
 async def grodno(callback: CallbackQuery):
     try:
         await callback.message.delete()
@@ -106,6 +112,7 @@ async def grodno(callback: CallbackQuery):
 
 
 @router.callback_query(Text(text='/r~mogilevskaya-obl'))
+@logger.catch
 async def mogilev(callback: CallbackQuery):
     try:
         await callback.message.delete()
@@ -124,6 +131,7 @@ async def mogilev(callback: CallbackQuery):
 
 
 @router.callback_query(Text(text='/r~vitebskaya-obl'))
+@logger.catch
 async def vitebsk(callback: CallbackQuery):
     try:
         await callback.message.delete()
@@ -142,6 +150,7 @@ async def vitebsk(callback: CallbackQuery):
 
 
 @router.callback_query(Text(text='/r~gomelskaya-obl'))
+@logger.catch
 async def gomel(callback: CallbackQuery):
     try:
         await callback.message.delete()

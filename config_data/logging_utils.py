@@ -1,5 +1,7 @@
-import logging
+from loguru import logger
 
-
-def setup_logger(log_file):
-    logging.basicConfig(filename=log_file, level=logging.ERROR)
+logger.add('loguru.log',
+           format='{time} {level} {message}',
+           level='INFO',
+           rotation='2 mb',
+           compression='zip')

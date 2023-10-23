@@ -6,8 +6,10 @@ from bs4 import BeautifulSoup
 from services.search_function import bot
 from database.database import users_requests_db, users_max_items
 from aiohttp_socks import ProxyType, ProxyConnector
+from config_data.logging_utils import logger
 
 
+@logger.catch
 async def new_search(session: aiohttp.ClientSession, sem, user_id, request):
     async with sem:
         for reg, req in zip(request['region'], request['request']):
@@ -47,9 +49,10 @@ async def new_search(session: aiohttp.ClientSession, sem, user_id, request):
                                     except Exception as err:
                                         print(err)
             except Exception as err:
-                print(f'GET or SOUP err: {err}, ({url})')
+                logger.error(f'GET or SOUP err: {err}, ({url}), {user_id}')
 
 
+@logger.catch
 async def new_search_monitor(num_sem):
     sem = asyncio.Semaphore(num_sem)
     async with aiohttp.ClientSession() as session:
@@ -59,6 +62,7 @@ async def new_search_monitor(num_sem):
         await asyncio.gather(*tasks)
 
 
+@logger.catch
 async def vip_new_search_monitor(num_sem):
     sem = asyncio.Semaphore(num_sem)
     connector = ProxyConnector(

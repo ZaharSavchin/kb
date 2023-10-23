@@ -2,12 +2,14 @@ from handlers.user_handlers import DeleteCallbackFactory
 from aiogram import Router
 from aiogram.types import CallbackQuery
 from database.database import users_requests_db, save_users_requests_db
+from config_data.logging_utils import logger
 
 
 router = Router()
 
 
 @router.callback_query(DeleteCallbackFactory.filter())
+@logger.catch
 async def delete_press(callback: CallbackQuery,
                        callback_data: DeleteCallbackFactory):
     user_id = callback.from_user.id

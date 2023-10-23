@@ -1,8 +1,10 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from lexicon.lexicon import LEXICON_REGIONS
+from config_data.logging_utils import logger
 
 
+@logger.catch
 def create_regions_keyboard(*buttons: str) -> InlineKeyboardMarkup:
     kb_builder = InlineKeyboardBuilder()
     kb_builder.row(*[InlineKeyboardButton(

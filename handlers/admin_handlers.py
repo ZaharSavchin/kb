@@ -14,7 +14,7 @@ from services.search_function import get_items, test_time
 from services.new_search_function import new_search_monitor, vip_new_search_monitor
 from keyboards.delete_kb import create_delete_users_keyboard
 from config_data.config import admin_id
-import database
+from config_data.logging_utils import logger
 
 from config_data.config import Config, load_config
 from aiogram import Bot
@@ -35,8 +35,10 @@ router = Router()
 users_to_delete = {}
 
 
+@logger.catch
 @router.message(F.text.startswith('bot stat'))
 async def stat_message(message: Message):
+    logger.warning(f'{message.text}')
     if message.text.endswith('start'):
         await get_items()
     elif message.text.endswith('all'):
@@ -89,6 +91,7 @@ async def stat_message(message: Message):
         await message.answer(f"users: {len(users_db)}\nactive users: {len(users_requests_db)}")
 
 
+@logger.catch
 async def clear_users(user_id, name, sem: asyncio.Semaphore):
     async with sem:
         if "<" in name or ">" in name:
@@ -97,11 +100,12 @@ async def clear_users(user_id, name, sem: asyncio.Semaphore):
             sent_message = await bot.send_message(chat_id=user_id, text="_", disable_notification=True)
             await bot.delete_message(chat_id=user_id, message_id=sent_message.message_id)
         except aiogram.exceptions.TelegramForbiddenError as e:
-            print(e)
+            logger.debug(f'{e}, {name}, {user_id}')
             users_to_delete[user_id] = name
 
 
 @router.message(F.text == 'bot users clear')
+@logger.catch
 async def delete(message: Message):
 
     sem = asyncio.Semaphore(5)
@@ -128,6 +132,7 @@ async def delete(message: Message):
 
 
 @router.callback_query(Text(text='delete'))
+@logger.catch
 async def delete(callback: CallbackQuery):
     id_to_delete = set(users_db.keys()) & set(users_to_delete.keys())
 
@@ -142,17 +147,20 @@ async def delete(callback: CallbackQuery):
 
 
 @router.callback_query(Text(text='cansel'))
+@logger.catch
 async def cansel(callback: CallbackQuery):
     users_to_delete.clear()
     await callback.answer("удаление отменено")
 
 
 @router.message(F.text == 'bot test time')
+@logger.catch
 async def test_time_users(message: Message):
     await test_time()
 
 
 @router.message(F.text == 'bot save db')
+@logger.catch
 async def save_db(message: Message):
 
     if message.from_user.id == admin_id:
@@ -180,6 +188,7 @@ async def save_db(message: Message):
 
 
 @router.message(F.text == 'bot clear db')
+@logger.catch
 async def clear_db(message: Message):
     if message.from_user.id == admin_id:
         for id_, user in users_requests_db.items():
@@ -189,6 +198,7 @@ async def clear_db(message: Message):
 
 
 @router.message(F.text.startswith('bot_new_search'))
+@logger.catch
 async def stat_message(message: Message):
     num_sem = int(message.text.split()[1])
     pause = int(message.text.split()[2])
@@ -204,6 +214,7 @@ async def stat_message(message: Message):
 
 
 @router.message(F.text.startswith('vip_bot_new_search'))
+@logger.catch
 async def stat_message(message: Message):
     num_sem = int(message.text.split()[1])
     pause = int(message.text.split()[2])
@@ -223,6 +234,7 @@ class MaxItemsCallbackFactory(CallbackData, prefix='max_items'):
 
 
 @router.message(F.text.startswith('bot change max_items'))
+@logger.catch
 async def change_max_items(message: Message):
     id_ = int(message.text.split()[-1])
     name = users_db[id_]
@@ -248,6 +260,7 @@ async def change_max_items(message: Message):
 
 
 @router.message(F.text == 'bot change db')
+@logger.catch
 async def change_db(message: Message):
     for id_, request in users_requests_db.items():
         req = request['request']
@@ -260,6 +273,7 @@ async def change_db(message: Message):
 
 
 @router.message(F.text == 'bot write max_items')
+@logger.catch
 async def change_max_items(message: Message):
     for id_, name in users_db.items():
         users_max_items[id_] = 1

@@ -6,11 +6,13 @@ from config_data.config import admin_id
 from database.database import users_db
 
 from handlers.admin_handlers import bot
+from config_data.logging_utils import logger
 
 router = Router()
 
 
 @router.message(F.text == 'bot send ads to users')
+@logger.catch
 async def send_ads(message: Message):
     counter = 0
     for user_id, name in users_db.copy().items():

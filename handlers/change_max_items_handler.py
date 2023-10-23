@@ -5,11 +5,13 @@ from aiogram import Router
 from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 from database.database import (users_max_items, save_users_max_items, users_db, users_requests_db,
                                save_users_requests_db, usernames_db)
+from config_data.logging_utils import logger
 
 router = Router()
 
 
 @router.callback_query(MaxItemsCallbackFactory.filter())
+@logger.catch
 async def plus_press(callback: CallbackQuery,
                      callback_data: MaxItemsCallbackFactory):
     user_id = callback_data.user_id

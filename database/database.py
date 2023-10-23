@@ -1,4 +1,5 @@
 from typing import Dict, List, Union
+from config_data.logging_utils import logger
 
 import redis
 import json
@@ -64,18 +65,22 @@ else:
     users_max_items = {}
 
 
+@logger.catch
 # Функция для сохранения словаря в Redis
 async def save_users_db():
     r.set('user_dict', json.dumps(users_db))
 
 
+@logger.catch
 async def save_usernames_db():
     r.set('usernames_dict', json.dumps(usernames_db))
 
 
+@logger.catch
 async def save_users_requests_db():
     r.set('users_requests', json.dumps(users_requests_db))
 
 
+@logger.catch
 async def save_users_max_items():
     r.set('users_max_items', json.dumps(users_max_items))
