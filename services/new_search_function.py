@@ -73,7 +73,7 @@ async def vip_new_search_monitor(num_sem):
         password='UYpDQb',  # Пароль для аутентификации
         rdns=True  # Использование обратного DNS-разрешения
     )
-    async with aiohttp.ClientSession() as session:
+    async with aiohttp.ClientSession(connector=connector) as session:
         tasks = [asyncio.create_task(new_search(session, sem, user_id, request))
                  for user_id, request in users_requests_db.copy().items()
                  if users_max_items[user_id] > 1]

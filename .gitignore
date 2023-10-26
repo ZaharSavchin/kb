@@ -4,3 +4,7 @@ __pycache__/
 .idea/
 *.log
 *.zip
+user_dict.json
+user_requests.json
+usernames_dict.json
+users_max_items.json

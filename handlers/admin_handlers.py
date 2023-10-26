@@ -192,8 +192,12 @@ async def save_db(message: Message):
 async def clear_db(message: Message):
     if message.from_user.id == admin_id:
         for id_, user in users_requests_db.items():
-            if len(user['user_items']) > 100:
-                user['user_items'][:] = user['user_items'][-100:]
+            if len(user['request']) > 1:
+                if len(user['user_items']) > 50:
+                    user['user_items'][:] = user['user_items'][-50:]
+            if len(user['request']) == 1:
+                if len(user['user_items']) > 5:
+                    user['user_items'][:] = user['user_items'][-5:]
         await message.answer('finish clearing db')
 
 
