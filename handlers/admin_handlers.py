@@ -228,7 +228,7 @@ async def stat_message(message: Message):
         await vip_new_search_monitor(num_sem)
         counter += 1
         if counter == 1 or counter % 25 == 0:
-            await bot.send_message(chat_id=admin_id, text=f'vip {counter}')
+            await bot.send_message(chat_id=admin_id, text=f'vip {counter}', disable_notification=True)
         await asyncio.sleep(pause)
 
 
