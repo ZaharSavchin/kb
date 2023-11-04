@@ -232,6 +232,26 @@ async def stat_message(message: Message):
         await asyncio.sleep(pause)
 
 
+@router.message(F.text.startswith('search_by_name'))
+@logger.catch
+async def search_by_name(message: Message):
+    name = ' '.join(message.text.split()[1:])
+    for user_id, user_name in users_db.copy().items():
+        if name == user_name:
+            message_to_admin = f'{user_name}, @{usernames_db[user_id]}, {user_id}'.replace(">", "&gt;").replace("<", "&lt;")
+            await bot.send_message(chat_id=admin_id, text=message_to_admin)
+
+
+@router.message(F.text.startswith('search_by_username'))
+@logger.catch
+async def search_by_username(message: Message):
+    username_find = message.text.split()[1]
+    for user_id, username in usernames_db.copy().items():
+        if username_find == username:
+            message_to_admin = f'{users_db[user_id]}, @{username}, {user_id}'.replace(">", "&gt;").replace("<", "&lt;")
+            await bot.send_message(chat_id=admin_id, text=message_to_admin)
+
+
 class MaxItemsCallbackFactory(CallbackData, prefix='max_items'):
     user_id: int
     change: str
