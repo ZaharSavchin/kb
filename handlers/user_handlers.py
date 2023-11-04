@@ -72,7 +72,21 @@ async def process_help_command(message: Message):
     await save_usernames_db()
     if message.from_user.id not in users_db:
         users_db[message.from_user.id] = message.from_user.full_name
-    await message.answer(LEXICON["/help"])
+    await message.answer(LEXICON["/help"], reply_markup=slots_button)
+
+
+@router.message(Command(commands='slots'))
+@logger.catch
+async def buy_button(message: Message):
+    user_id = message.from_user.id
+    await message.answer(text=f' - Количество запросов = количество слотов (ячеек для отслеживания)\n'
+                              f' - <b>Один</b> слот бесплатный с частотой отслеживания около <b>30 минут</b>\n'
+                              f' - <b>Второй</b> слот стоит 5 BYN в месяц\n'
+                              f' - <b>Каждый</b> последующий 2.5 BYN в месяц\n'
+                              f' - При покупке любого количества слотов частота отслеживания всех запросов и ссылок (включая первый бесплатный) около <b>1 минуты</b>\n\n'
+                              f' - Для получения реквизитов для оплаты напишите сюда @help_enot нужное Вам количество слотов')
+    mes_too_admin = f'{users_db[user_id]}, @{usernames_db[user_id]}, {user_id}'.replace(">", "&gt;").replace("<", "&lt;")
+    await bot.send_message(chat_id=admin_id, text=mes_too_admin)
 
 
 @router.message(Command(commands='donat'))
@@ -189,7 +203,7 @@ async def add_request_process(message: Message):
             mess = message.text
             if "<" in mess or ">" in mess:
                 mess = mess.replace(">", "&gt;").replace("<", "&lt;")
-            await message.answer(f"Начат поиск по ссылке: {mess}\n✉️ожидайте сообщений...")
+            await message.answer(text=f"Начат поиск по ссылке: {mess}\n✉️ожидайте сообщений...", reply_markup=slots_button)
             await save_users_requests_db()
         else:
             await message.answer(f"выберите регион поиска", reply_markup=create_regions_keyboard('all',

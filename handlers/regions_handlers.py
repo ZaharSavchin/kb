@@ -7,6 +7,8 @@ from lexicon.lexicon import LEXICON_REGIONS
 from config_data.config import Config, load_config
 from config_data.logging_utils import logger
 
+from handlers.user_handlers import slots_button
+
 
 config: Config = load_config()
 
@@ -29,7 +31,7 @@ async def process_forward_press(callback: CallbackQuery):
         await bot.send_message(chat_id=callback.from_user.id, text=f'🦝Енот отправился на поиски объявлений по запросу: '
                                f'"{mess}"\n'
                                f'🗺️регион: "{LEXICON_REGIONS["all"]}"\n'
-                               f"✉️ожидайте сообщений...")
+                               f"✉️ожидайте сообщений...", reply_markup=slots_button)
         await save_users_requests_db()
     except Exception as err:
         print(err)
@@ -48,7 +50,7 @@ async def minsk(callback: CallbackQuery):
         await bot.send_message(chat_id=callback.from_user.id, text=f'🦝Енот отправился на поиски объявлений по запросу: '
                                                                    f'"{mess}"\n'
                                f'🗺️регион: "{LEXICON_REGIONS["/r~minsk"]}"\n'
-                               f"✉️ожидайте сообщений...")
+                               f"✉️ожидайте сообщений...", reply_markup=slots_button)
         await save_users_requests_db()
     except Exception as err:
         print(err)
@@ -67,7 +69,7 @@ async def minsk_obl(callback: CallbackQuery):
         await bot.send_message(chat_id=callback.from_user.id, text=f'🦝Енот отправился на поиски объявлений по запросу: '
                                                                    f'"{mess}"\n'
                                f'🗺️регион: "{LEXICON_REGIONS["/r~minskaya-obl"]}"\n'
-                               f"✉️ожидайте сообщений...")
+                               f"✉️ожидайте сообщений...", reply_markup=slots_button)
         await save_users_requests_db()
     except Exception as err:
         print(err)
@@ -86,7 +88,7 @@ async def brest(callback: CallbackQuery):
         await bot.send_message(chat_id=callback.from_user.id, text=f'🦝Енот отправился на поиски объявлений по запросу: '
                                                                    f'"{mess}"\n'
                                f'🗺️регион: "{LEXICON_REGIONS["/r~brestskaya-obl"]}"\n'
-                               f"✉️ожидайте сообщений...")
+                               f"✉️ожидайте сообщений...", reply_markup=slots_button)
         await save_users_requests_db()
     except Exception as err:
         print(err)
@@ -105,7 +107,7 @@ async def grodno(callback: CallbackQuery):
         await bot.send_message(chat_id=callback.from_user.id, text=f'🦝Енот отправился на поиски объявлений по запросу: '
                                                                    f'"{mess}"\n'
                                f'🗺️регион: "{LEXICON_REGIONS["/r~grodnenskaya-obl"]}"\n'
-                               f"✉️ожидайте сообщений...")
+                               f"✉️ожидайте сообщений...", reply_markup=slots_button)
         await save_users_requests_db()
     except Exception as err:
         print(err)
@@ -124,7 +126,7 @@ async def mogilev(callback: CallbackQuery):
         await bot.send_message(chat_id=callback.from_user.id, text=f'🦝Енот отправился на поиски объявлений по запросу: '
                                                                    f'"{mess}"\n'
                                f'🗺️регион: "{LEXICON_REGIONS["/r~mogilevskaya-obl"]}"\n'
-                               f"✉️ожидайте сообщений...")
+                               f"✉️ожидайте сообщений...", reply_markup=slots_button)
         await save_users_requests_db()
     except Exception as err:
         print(err)
@@ -143,7 +145,7 @@ async def vitebsk(callback: CallbackQuery):
         await bot.send_message(chat_id=callback.from_user.id, text=f'🦝Енот отправился на поиски объявлений по запросу: '
                                                                    f'"{mess}"\n'
                                f'🗺️регион: "{LEXICON_REGIONS["/r~vitebskaya-obl"]}"\n'
-                               f"✉️ожидайте сообщений...")
+                               f"✉️ожидайте сообщений...", reply_markup=slots_button)
         await save_users_requests_db()
     except Exception as err:
         print(err)
@@ -162,7 +164,7 @@ async def gomel(callback: CallbackQuery):
         await bot.send_message(chat_id=callback.from_user.id, text=f'🦝Енот отправился на поиски объявлений по запросу: '
                                                                    f'"{mess}"\n'
                                f'🗺️регион: "{LEXICON_REGIONS["/r~gomelskaya-obl"]}"\n'
-                               f"✉️ожидайте сообщений...")
+                               f"✉️ожидайте сообщений...", reply_markup=slots_button)
         await save_users_requests_db()
     except Exception as err:
         print(err)
