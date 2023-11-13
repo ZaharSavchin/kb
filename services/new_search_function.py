@@ -40,7 +40,7 @@ async def new_search(session: aiohttp.ClientSession, sem, user_id, request):
                                     item = item.replace(">", "&gt;").replace("<", "&lt;")
                                 try:
 
-                                    image_url = re.search('data-src="(.*?)"', str(element)).group(1)
+                                    image_url = re.search('src="(.*?)"', str(element)).group(1)
                                     await bot.send_photo(chat_id=user_id, photo=image_url, caption=item)
                                 except Exception as e:
                                     print(f'e={e}')
