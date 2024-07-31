@@ -1,0 +1,10 @@
+version: "2"
+services:
+    reris:
+        image: redis
+        container_name: redis
+    worker:
+        image: zahar96/kb_bot
+        environment:
+            - ADMIN_ID=6031519620
+            - BOT_TOKEN=6019374546:AAE-lEpmiXg38qJzQz_qoCfKJKofHwKxxJg
